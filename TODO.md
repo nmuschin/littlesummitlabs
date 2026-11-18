@@ -1,8 +1,8 @@
-# Switchback Labs — combined to-do list
+# Little Summit Labs — combined to-do list
 
 *This file is public on the studio site, like everything in this repo.*
 
-Built on 2026-11-05 (last updated 2026-11-10: App Store Connect records for five apps; organization developer account decided; netmap's default branch) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. When it was built, none of the repos had open GitHub issues or PRs, so everything here comes from those files. Covers 14 repos; netmap and diabetes-project were added on 2026-11-05.
+Built on 2026-11-05 (last updated 2026-11-18: studio renamed Little Summit Labs; App Store Connect records for five apps; organization developer account decided) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. When it was built, none of the repos had open GitHub issues or PRs, so everything here comes from those files. Covers 14 repos; netmap and diabetes-project were added on 2026-11-05.
 
 **How it's ordered:** first fixes for problems people can hit today, then apps that are built and only need launch steps, then feature work. Within each tier, the item that finishes an app comes before the one that starts something new.
 
@@ -22,7 +22,10 @@ Built on 2026-11-05 (last updated 2026-11-10: App Store Connect records for five
 ## Decide this week (these have lead time and block several launches)
 
 - [ ] **Developer account: going with an organization account** (decided 2026-11-10, to keep your legal name off the App Store). An individual account shows your legal name as the seller; an organization account shows the company's legal name instead. Apple doesn't accept a DBA or trade name, so this needs a real legal entity. In order: (1) pick the studio name; (2) form an LLC under that name, and ask about a state or registered-agent setup that keeps your name out of public filings; (3) EIN; (4) D-U-N-S number (free, can take a week or two); (5) the domain, with a public website and an email at it, which Apple checks; (6) enroll the organization ($99/year); (7) move the apps over with App Transfer or recreate their records. **Until then, don't release anything publicly**, because the first public release shows the seller name. Internal TestFlight is fine. 🧑
-- [ ] **Studio name and domain** (Saturday's reminder). It feeds the developer name, the contact email for the privacy and support pages, and the website address. 🧑
+- [x] **Studio name: Little Summit Labs** (decided 2026-11-18; formerly Switchback Labs), with the summit mark (a mountain with the trail cut into it) on the indigo tile. No matches in the USPTO wordmark search or the Oklahoma business entity search. New brand kit and site in nmuschin/switchbacklabs#13. 🤝
+- [ ] **Buy the domains:** `littlesummit.app` (the main one) and `littlesummitlabs.com` (redirects to it); both were available on 2026-11-13. Turn on WHOIS privacy. Then forward `hello@` to Gmail, point GitHub Pages at `littlesummit.app`, and update the site's `og:url` and `og:image` tags 🧑
+- [ ] **Form Little Summit Labs LLC** in Oklahoma, with a registered agent so your home address stays off the filing, then the EIN and D-U-N-S number (steps in the developer-account item above) 🧑
+- [ ] Optional: rename the GitHub repo `switchbacklabs` to `littlesummitlabs` (Settings → General). GitHub redirects the old address; the Pages address changes until the custom domain is set 🧑
 - [x] **App Store Connect records** for High Low Buffalo, QuoteBloom, Cite It Right, CellarStories and FuelTrack (as "FuelTrack: Gas & Mileage Log"), created 2026-11-10. They're on the individual account for now; see the item above. 🧑
 - [ ] **The rest of the Apple paperwork:** the Developer ID certificate and `notarytool` profile (MarkdownDoctor). Do this on the organization account if it's ready, since the certificate carries the account's name. 🧑
 
@@ -134,9 +137,9 @@ Phases 1–3 are written (presence monitoring for the Home Assistant Pi, history
 Only a README so far: "Project looking at the cost of diabetes and the shift to GLP-1 usage." Not an app, so it's kept off the studio site.
 - [ ] Decide the question, the data sources and the output (report, notebook or dashboard), then add a plan to the repo 🤝
 
-## Studio (Switchback Labs)
+## Studio (Little Summit Labs)
 
-- [ ] **Privacy policy and support pages.** Written in nmuschin/switchbacklabs#3 (draft) for QuoteBloom, FuelTrack, DateGlow, Bellwether, MarkdownDoctor and CellarStories, plus `/support.html`. Waiting on a contact email to replace the `CONTACT_EMAIL` placeholder. 🧑
+- [ ] **Privacy policy and support pages.** Written in nmuschin/switchbacklabs#3 (draft) for QuoteBloom, FuelTrack, DateGlow, Bellwether, MarkdownDoctor and CellarStories, plus `/support.html`. Waiting on a contact email to replace the `CONTACT_EMAIL` placeholder. They also need renaming from Switchback Labs to Little Summit Labs; once the domain is bought, `hello@littlesummit.app` is the natural contact address (your call). 🧑
 - [ ] Add App Store and website links to the app grid as each app ships 🤖
 - [ ] Branding round, as planned: icons for Bellwether and CellarStories (HLB's is done) 🤝
 - [x] **Shared working preferences in every repo.** A short "Working preferences" section in each of the 14 repos' `CLAUDE.md`, pointing at the full version in nmuschin/CodeAI. Merged 2026-11-05. 🤖
@@ -151,7 +154,7 @@ Rough times, assuming evenings and weekends. Each week ends with something shipp
 
 ### Week 1 · Nov 5–8 · decisions and paperwork (~3 h)
 1. ~~Waymark Study: set `MAIL_FROM` and `APP_URL` on the host~~ (already set).
-2. Decide: individual or company developer account, and the studio name and domain. Start a D-U-N-S request if going the company route.
+2. ~~Decide the studio name~~ (Little Summit Labs, 2026-11-18). Buy `littlesummit.app` and `littlesummitlabs.com`, form the LLC and start the D-U-N-S request.
 3. Apple paperwork: ~~App Store Connect records for HLB, QuoteBloom, Cite It Right, CellarStories and FuelTrack~~ (done 2026-11-10). Still to do: the Developer ID certificate and `notarytool` profile.
 4. ~~Deploy CloudKit schemas to Production for QuoteBloom, FuelTrack, DateGlow and CellarStories~~ (all done 2026-11-08).
 
