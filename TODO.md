@@ -2,7 +2,7 @@
 
 *This file is public on the studio site, like everything in this repo.*
 
-Built on 2026-11-05 (last updated 2026-11-18: studio renamed Little Summit Labs; App Store Connect records for five apps; organization developer account decided) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. When it was built, none of the repos had open GitHub issues or PRs, so everything here comes from those files. Covers 14 repos; netmap and diabetes-project were added on 2026-11-05.
+Built on 2026-11-05 (last updated 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 14 repos; netmap and diabetes-project were added on 2026-11-05.
 
 **How it's ordered:** first fixes for problems people can hit today, then apps that are built and only need launch steps, then feature work. Within each tier, the item that finishes an app comes before the one that starts something new.
 
@@ -35,12 +35,14 @@ Built on 2026-11-05 (last updated 2026-11-18: studio renamed Little Summit Labs;
 Web is live. iOS milestones I0–I6 and Phase 2 (Friends, History, Settings, Widget) are built, and the listing text was committed on Oct 29.
 - [x] App Store Connect app record (2026-11-10) 🧑
 - [x] Demo account for App Review: `review@highlowbuffaloapp.com` (forwards to Gmail), with a friend and shared days (2026-11-10). Check it still exists before each submission, because reviewers may test Delete account 🧑
-- [ ] First TestFlight upload (`ios/README.md`) 🧑
+- [x] First TestFlight upload (2026-11-10) 🧑
 - [ ] App Review notes: delete account, report and block paths (draft in `PLAN-ios.md` §8) 🤝
 - [ ] Screenshots + the privacy "nutrition label" (email, name, user content, no tracking) 🧑
-- [ ] Check `APNS_KEY_ID` / `APNS_PRIVATE_KEY` are in Vercel, or no push is sent 🧑
+- [ ] **Push notifications: fix the key, then test.** `APNS_KEY_ID` and `APNS_PRIVATE_KEY` are in Vercel, but the server can't read the key (`ERR_OSSL_UNSUPPORTED`): the paste lost its line breaks or gained quotation marks. Re-paste the `.p8` with its six lines intact, redeploy, then react to one of your days from the demo account. Optional: have the server accept any paste of the key 🤝
+- [ ] **Open the app straight away on launch** (nmuschin/HighLowBuffalo#21): build it, run the tests, and check a launch after 10 idle minutes and one in Airplane Mode, then merge. Launch still felt slow from Xcode; check from the Home Screen or TestFlight 🧑
 - [x] Icon: the same bison on a terracotta gradient tile (option 1, kept simple while the studio name may still change). Merged in nmuschin/HighLowBuffalo#20 on 2026-11-06 🤝
 - [ ] Check the new icon on your Mac: the in-app logo on the Welcome screen shows the gradient (not a flat or black tile), the Home Screen app icon, and the favicon on the live site in a private window 🧑
+- [ ] After iPhone v1.0 ships: **Android.** The plan is merged (`PLAN-android.md`, nmuschin/HighLowBuffalo#23). The shared contract and the Android backend (S0, A0) are built and tested in draft nmuschin/HighLowBuffalo#22, held so nothing changes on the server during the TestFlight beta. Then phases A1 onward (Kotlin + Compose, needs Android Studio) 🤝
 
 ### 2. QuoteBloom
 Everything for 1.0 is done except the listing.
@@ -53,11 +55,13 @@ Everything for 1.0 is done except the listing.
 - [ ] Optional, after launch: a Mac widget. The widget code already handles macOS; the target needs macOS added, the App Sandbox entitlement and the Mac runpath. 🤖
 
 ### 3. Cite It Right (Apple app)
-Phases 1–5 are merged. Phase 6 (Spanish, accessibility, icon, TestFlight prep) is written and waiting for its first Xcode build.
-- [ ] First build of phase 6 in Xcode; fix whatever it turns up 🤝
-- [ ] Test the live camera features (barcode, photo) on a real iPhone 🧑
+All six phases are merged. Per the plan in nmuschin/CiteItRight#6, the phase 6 build passes its unit and UI tests and the barcode camera works on a real iPhone.
+- [x] First build of phase 6 in Xcode (recorded in nmuschin/CiteItRight#6) 🤝
+- [x] Test the live camera features on a real iPhone (recorded in nmuschin/CiteItRight#6) 🧑
+- [ ] **Merge nmuschin/CiteItRight#6:** the App Store listing (English and Spanish), the Chrome Web Store listing with screenshots (English and Spanish), and the plan update. Check the listing lengths against App Store Connect's limits 🧑
 - [x] Bundle ID and App Store Connect record (2026-11-10) 🧑
 - [ ] TestFlight: App Privacy, uploads for iOS and Mac (`docs/testflight.md`) 🧑
+- [ ] Submit the Safari/Chrome extension to the Chrome Web Store with the new listing, if you want it there 🧑
 
 ### 4. CellarStories
 Web went live on Oct 20. The iOS app is feature-complete for 1.0.
@@ -90,12 +94,12 @@ The 1.0 build settings, privacy manifest and validation are done.
 ## Tier 2 — Feature work on apps you're using
 
 ### 7. JobTrack (Mac, version 0.6 in progress)
-- [ ] **Decide the distribution channel first.** The bundled `JobTrackDigestMCP` helper isn't sandboxed and is launched by a fixed path, which the Mac App Store doesn't allow. The choice is a direct download with notarization (keeps the MCP helper) or the Mac App Store (needs a redesign). It shapes the whole 0.9 milestone. 🧑 decision, 🤖 write-up
+- [ ] **Confirm the distribution channel:** the roadmap in nmuschin/JobTrack#2 records **Developer ID (direct download, notarized)**, which keeps the MCP helper. The Mac App Store would need a redesign. Confirm it's still your choice 🧑
 - [ ] 0.6 polish: searchable text, help documentation, the toolbar margin TODO in `JobDetailView.swift`, two-pane layout for the views that show "No Job Selected", accessibility, Spanish to 100% 🤖
 - [ ] Fix the broken `defaultsAreOpeningAndFourBeats` test (TODO in `JobTrackTests.swift`) 🤖
 - [ ] Local notifications for follow-ups and interview dates 🤖
 - [ ] Deploy the CloudKit schema to Production before shipping beyond your own Mac 🧑
-- [ ] Per-job "why this score" view built on the `FitScorer` details 🤖
+- [ ] Per-job "why this score" view: built in nmuschin/JobTrack#2 with tests and Spanish strings. Build it, run the tests, check a scan-scored and a locally scored job, then merge 🧑
 - [ ] 0.7 automation round-trip (skill, scheduled search, a discoverable sync folder) → 0.8 charts → 0.9 generalize for other users (remove the MSL-specific language) 🤝
 
 ### 8. DateGlow
@@ -121,9 +125,12 @@ Every module in `PLAN.md`'s build order is built, and there's no open backlog.
 - [ ] Link-preview image, once you share the production URL 🤖
 
 ### 12. Netmap (Mac + iPhone network scanner)
-Phases 1–3 are written (presence monitoring for the Home Assistant Pi, history, notifications, both apps, iCloud sync with push alerts, and the general scanner) but **have never been compiled**: it was written without a Swift toolchain, and the logic was checked by mirroring it in Python (~160 checks).
+Phases 1–3 are written (presence monitoring for the Home Assistant Pi, history, notifications, both apps, iCloud sync with push alerts, and the general scanner). **The Swift package now compiles and its tests pass on your Mac** (nmuschin/netmap#2, 2026-11-16). The app targets haven't been confirmed yet.
 - [ ] Confirm the assumptions on your network first: `arp -an`, `dns-sd -B _home-assistant._tcp .`, `nc -vz <pi-ip> 8123`, and note the Pi's MAC on both wired and Wi-Fi (README, "Before building") 🧑
-- [ ] First build: `xcodegen generate`, then `swift build` / `swift test`, and fix the compile errors. Most likely in `ICMPProbe`, `TCPConnectProbe`, the `#Predicate` macros and the SwiftUI views 🤝
+- [x] First build of the package: `swift build` and `swift test` pass (nmuschin/netmap#2, 2026-11-16) 🤝
+- [ ] Build and run the two apps: `xcodegen generate`, then the Mac and iPhone targets in Xcode, and fix what that turns up 🤝
+- [ ] Review nmuschin/netmap#3: find Home Assistant by its own Bonjour announcement during onboarding 🧑
+- [ ] Update the README's status, which still says "uncompiled" 🤖
 - [ ] iCloud setup per `docs/CLOUDKIT.md`: container ID, the queryable index, deploy the schema to Production, APNs environment 🧑
 - [ ] Wire the scan screens (`ScanView`, `ScanResultsView`, `ScanDiffView`) into both apps' navigation 🤖
 - [ ] App icons and asset catalogs 🤝
@@ -134,8 +141,15 @@ Phases 1–3 are written (presence monitoring for the Home Assistant Pi, history
 ## Other repos
 
 ### diabetes-project
-Only a README so far: "Project looking at the cost of diabetes and the shift to GLP-1 usage." Not an app, so it's kept off the studio site.
-- [ ] Decide the question, the data sources and the output (report, notebook or dashboard), then add a plan to the repo 🤝
+State variation in Medicaid GLP-1 use against diabetes burden. Not an app, so it's kept off the studio site. Steps 1–5 are merged (nmuschin/diabetes-project#2): burden data, the frozen GLP-1 product list, Medicare Part D and Medicaid drug data, the state-year panel, and the R models and figures. Step 6, the manuscript, is a first draft; step 7 is a medRxiv preprint. The full list is `manuscript/TODO.md`.
+- [x] Decide the question, the data sources and the output; the pre-specified plan is `docs/ANALYSIS_PLAN.md` 🤝
+- [ ] Review nmuschin/diabetes-project#3: the literature search and citations for the `[REF NEEDED]` places 🧑
+- [ ] Verify the eight listed references against the originals, and add access dates for the CMS data 🧑
+- [ ] Check the Arkansas explanation in the Discussion against CMS and state documentation, or delete it 🧑
+- [ ] Reproduce the results on your machine with `R/05_models.R` and confirm they match Tables 2 and 3 🧑
+- [ ] Author block and declarations: affiliation, ORCID, contributions, funding, conflicts of interest, AI-use statement and ethics determination 🧑
+- [ ] Archive a release (for example on Zenodo) and cite the DOI; then post to medRxiv 🧑
+- [ ] Should do: a published weight-management coverage list instead of the proxy, the quarterly sensitivity analysis, a methods read by a biostatistician, and trimming the abstract to the venue's limit 🤝
 
 ## Studio (Little Summit Labs)
 
@@ -143,7 +157,7 @@ Only a README so far: "Project looking at the cost of diabetes and the shift to 
 - [ ] Add App Store and website links to the app grid as each app ships 🤖
 - [ ] Branding round, as planned: icons for Bellwether and CellarStories (HLB's is done) 🤝
 - [x] **Shared working preferences in every repo.** A short "Working preferences" section in each of the 14 repos' `CLAUDE.md`, pointing at the full version in nmuschin/CodeAI. Merged 2026-11-05. 🤖
-- [ ] Delete the last leftover branches (rechecked 2026-11-10; the "Delete branch" button on each merged PR, since I can't delete branches from a session): `claude/scripts-and-claude-md` and `claude/hlb-nickname` (CodeAI), `claude/working-preferences` (switchbacklabs, diabetes-project), `milestone/msl-personal` (JobTrack, already on `main`). Branches with open PRs go once those merge. 🧑
+- [ ] Delete the leftover branches (rechecked 2026-11-18; the "Delete branch" button on each merged PR, since I can't delete branches from a session): `claude/little-summit-labs` and `claude/todo-quotebloom-sync` (switchbacklabs), `claude/little-summit-labs` (CodeAI), `claude/android-plan-docs` (HLB), `milestone/msl-personal` (JobTrack, already on `main`). Branches with open PRs go once those merge. 🧑
 - [x] Netmap's default branch renamed from `claude/confident-bohr-i73ycp` to `main` (2026-11-10) 🧑
 
 ---
@@ -151,6 +165,8 @@ Only a README so far: "Project looking at the cost of diabetes and the shift to 
 ## Plan to finish (week by week)
 
 Rough times, assuming evenings and weekends. Each week ends with something shipped or submitted. If a week slips, push the whole plan back a week rather than starting the next app early.
+
+**Where things stand (Nov 18):** week 1 is done apart from the domains, the LLC and the Developer ID certificate. In week 2, HLB is on TestFlight with its demo account; push notifications still need the key re-pasted. Public releases wait for the organization account, so each app's "submit" step means **ready to submit** until then: TestFlight, screenshots and listing in place.
 
 ### Week 1 · Nov 5–8 · decisions and paperwork (~3 h)
 1. ~~Waymark Study: set `MAIL_FROM` and `APP_URL` on the host~~ (already set).
@@ -160,13 +176,13 @@ Rough times, assuming evenings and weekends. Each week ends with something shipp
 
 ### Week 2 · Nov 9–15 · High Low Buffalo and QuoteBloom (~6 h)
 Get each app ready to submit, but hold the public release until the organization account exists (see "Decide this week").
-1. HLB: TestFlight upload, demo account, review notes, screenshots, submit.
+1. HLB: ~~TestFlight upload, demo account~~ (done); fix the push key, review notes, screenshots, ready to submit.
 2. QuoteBloom: screenshots for iPhone, iPad and Mac, description from the draft, submit.
 3. Studio: once the contact email is chosen, merge the privacy and support pages so both apps have their URLs.
 
 ### Week 3 · Nov 16–22 · Cite It Right and MarkdownDoctor (~6 h)
-1. Cite It Right: first phase-6 build in Xcode, camera test on a real iPhone, TestFlight.
-2. MarkdownDoctor: run `Scripts/release.sh`, publish the DMG, add it to the site.
+1. Cite It Right: ~~first phase-6 build in Xcode, camera test on a real iPhone~~ (done); merge #6, then TestFlight.
+2. MarkdownDoctor: run `Scripts/release.sh`, publish the DMG, add it to the site. The Developer ID certificate carries the account's name, so do this on the organization account if it's ready.
 
 ### Week 4 · Nov 23–29 · CellarStories (lighter week: Thanksgiving)
 1. Import your real journal, run the live acceptance test with a friend, test iCloud sync across devices.
