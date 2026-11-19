@@ -125,7 +125,7 @@ Phases 1–3 are written (presence monitoring for the Home Assistant Pi, history
 - [ ] Confirm the assumptions on your network first: `arp -an`, `dns-sd -B _home-assistant._tcp .`, `nc -vz <pi-ip> 8123`, and note the Pi's MAC on both wired and Wi-Fi (README, "Before building") 🧑
 - [ ] First build: `xcodegen generate`, then `swift build` / `swift test`, and fix the compile errors. Most likely in `ICMPProbe`, `TCPConnectProbe`, the `#Predicate` macros and the SwiftUI views 🤝
 - [ ] iCloud setup per `docs/CLOUDKIT.md`: container ID, the queryable index, deploy the schema to Production, APNs environment 🧑
-- [ ] Wire the scan screens (`ScanView`, `ScanResultsView`, `ScanDiffView`) into both apps' navigation 🤖
+- [x] Wire the scan screens (`ScanView`, `ScanResultsView`, `ScanDiffView`) into both apps' navigation. Done in nmuschin/netmap#4, merged 2026-11-19; not compiled yet, so it's covered by the first-build item above 🤖
 - [ ] App icons and asset catalogs 🤝
 - [ ] Phase 4: the nmap engine and privileged helper (`ScanProfile` already builds the commands) 🤖
 - [ ] Phase 5: a headless watcher executable (`NetmapWatch` is already UI-free) 🤖
