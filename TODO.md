@@ -2,7 +2,7 @@
 
 *This file is public on the studio site, like everything in this repo.*
 
-Built on 2026-11-05 (last updated 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 14 repos; netmap and diabetes-project were added on 2026-11-05.
+Built on 2026-11-05 (last updated 2026-11-19: Bellwether and CellarStories icons; netmap's progress. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 14 repos; netmap and diabetes-project were added on 2026-11-05.
 
 **How it's ordered:** first fixes for problems people can hit today, then apps that are built and only need launch steps, then feature work. Within each tier, the item that finishes an app comes before the one that starts something new.
 
@@ -41,7 +41,7 @@ Web is live. iOS milestones I0–I6 and Phase 2 (Friends, History, Settings, Wid
 - [ ] **Push notifications: fix the key, then test.** `APNS_KEY_ID` and `APNS_PRIVATE_KEY` are in Vercel, but the server can't read the key (`ERR_OSSL_UNSUPPORTED`): the paste lost its line breaks or gained quotation marks. Re-paste the `.p8` with its six lines intact, redeploy, then react to one of your days from the demo account. Optional: have the server accept any paste of the key 🤝
 - [ ] **Open the app straight away on launch** (nmuschin/HighLowBuffalo#21): build it, run the tests, and check a launch after 10 idle minutes and one in Airplane Mode, then merge. Launch still felt slow from Xcode; check from the Home Screen or TestFlight 🧑
 - [x] Icon: the same bison on a terracotta gradient tile (option 1, kept simple while the studio name may still change). Merged in nmuschin/HighLowBuffalo#20 on 2026-11-06 🤝
-- [ ] Check the new icon on your Mac: the in-app logo on the Welcome screen shows the gradient (not a flat or black tile), the Home Screen app icon, and the favicon on the live site in a private window 🧑
+- [x] Check the new icon on your Mac: the in-app logo, the Home Screen app icon and the site's favicon (checked 2026-11-19) 🧑
 - [ ] After iPhone v1.0 ships: **Android.** The plan is merged (`PLAN-android.md`, nmuschin/HighLowBuffalo#23). The shared contract and the Android backend (S0, A0) are built and tested in draft nmuschin/HighLowBuffalo#22, held so nothing changes on the server during the TestFlight beta. Then phases A1 onward (Kotlin + Compose, needs Android Studio) 🤝
 
 ### 2. QuoteBloom
@@ -71,7 +71,8 @@ Web went live on Oct 20. The iOS app is feature-complete for 1.0.
 - [x] Deploy the CloudKit schema from Development to Production (done 2026-11-08) 🧑
 - [x] App Store Connect record (2026-11-10) 🧑
 - [ ] Submit iOS: screenshots, privacy policy URL, 17+ age rating (alcohol) 🧑
-- [ ] Decide on an app icon (it was on the "revise later" list) 🤝
+- [x] New app icon: a bottle whose label is an open notebook (nmuschin/CellarStories#3, 2026-11-19) 🤝
+- [ ] Check the icon on your Mac: Icon Composer's Default, Dark and Mono previews, then the Home Screen and Dock 🧑
 
 ### 5. MarkdownDoctor (Mac)
 All engineering for 1.0 is done. `Scripts/release.sh` archives, signs, notarizes and builds the DMG.
@@ -108,7 +109,8 @@ The 1.0 build settings, privacy manifest and validation are done.
 - [x] Deploy the CloudKit schema to Production (done 2026-11-08) 🧑
 
 ### 9. Bellwether (iPhone + Watch)
-- [ ] An app icon (it has none yet) 🤝
+- [x] An app icon: a silent bell with haptic buzz marks, light, dark, tinted and watch (nmuschin/Bellwether#2, 2026-11-19) 🤝
+- [ ] Check the icon on your Mac: Home Screen in Light, Dark and Tinted, and the watch app grid 🧑
 - [ ] "Paste your bell schedule" import instead of adding periods one at a time 🤖
 - [ ] Half-day and exam schedules that shift bell times 🤖
 - [ ] Localize the bare "Weekdays" string 🤖
@@ -125,18 +127,19 @@ Every module in `PLAN.md`'s build order is built, and there's no open backlog.
 - [ ] Link-preview image, once you share the production URL 🤖
 
 ### 12. Netmap (Mac + iPhone network scanner)
-Phases 1–3 are written (presence monitoring for the Home Assistant Pi, history, notifications, both apps, iCloud sync with push alerts, and the general scanner). **The Swift package now compiles and its tests pass on your Mac** (nmuschin/netmap#2, 2026-11-16). The app targets haven't been confirmed yet.
-- [ ] Confirm the assumptions on your network first: `arp -an`, `dns-sd -B _home-assistant._tcp .`, `nc -vz <pi-ip> 8123`, and note the Pi's MAC on both wired and Wi-Fi (README, "Before building") 🧑
+Phases 1–3 are written. The Swift package compiles and its tests pass (nmuschin/netmap#2), **the Mac app runs on your network**: onboarding finds Home Assistant by its own announcement (#3), and the scanner is wired into both apps (#4). Phase 4 changed: **no nmap** (macOS blocks its unsigned installer); the built-in scanner gets deeper instead (#5). The plan is `docs/ROADMAP.md`.
+- [x] Confirm the assumptions on your network (Home Assistant found by its announcement, on port 80 rather than 8123; nmuschin/netmap#3) 🧑
 - [x] First build of the package: `swift build` and `swift test` pass (nmuschin/netmap#2, 2026-11-16) 🤝
-- [ ] Build and run the two apps: `xcodegen generate`, then the Mac and iPhone targets in Xcode, and fix what that turns up 🤝
-- [ ] Review nmuschin/netmap#3: find Home Assistant by its own Bonjour announcement during onboarding 🧑
-- [ ] Update the README's status, which still says "uncompiled" 🤖
+- [x] Build and run the Mac app (nmuschin/netmap#3, #4) 🤝
+- [ ] Build and run the iPhone app on a device 🧑
+- [x] Wire the scan screens into both apps' navigation (nmuschin/netmap#4) 🤖
+- [ ] Merge nmuschin/netmap#8: the README's status now says the package compiles and the Mac app runs (it still said "uncompiled") 🧑
 - [ ] iCloud setup per `docs/CLOUDKIT.md`: container ID, the queryable index, deploy the schema to Production, APNs environment 🧑
-- [ ] Wire the scan screens (`ScanView`, `ScanResultsView`, `ScanDiffView`) into both apps' navigation 🤖
+- [ ] Review the open PRs: honour "Skip host discovery" (-Pn) in the native engine (#6) and flag risky services in scan results (#7) 🧑
+- [ ] Roadmap item 1, built-in scanner depth (in progress): name services from their replies, read TLS certificates, ~150 ranked ports, scan several hosts at once, a native "Thorough scan" 🤖
+- [ ] Roadmap items 3–5: a Bonjour browser, watching URLs (with certificate-expiry warnings), and Shortcuts and Siri 🤖
 - [ ] App icons and asset catalogs 🤝
-- [ ] Phase 4: the nmap engine and privileged helper (`ScanProfile` already builds the commands) 🤖
-- [ ] Phase 5: a headless watcher executable (`NetmapWatch` is already UI-free) 🤖
-- [ ] Later: the full IEEE vendor list instead of the seed `OUIDatabase`, and two-way device-settings sync 🤖
+- [ ] Later: a headless watcher executable (`NetmapWatch` is already UI-free), the full IEEE vendor list instead of the seed `OUIDatabase`, and two-way device-settings sync 🤖
 
 ## Other repos
 
@@ -155,7 +158,7 @@ State variation in Medicaid GLP-1 use against diabetes burden. Not an app, so it
 
 - [ ] **Privacy policy and support pages.** Written in nmuschin/switchbacklabs#3 (draft) for QuoteBloom, FuelTrack, DateGlow, Bellwether, MarkdownDoctor and CellarStories, plus `/support.html`. Waiting on a contact email to replace the `CONTACT_EMAIL` placeholder. They also need renaming from Switchback Labs to Little Summit Labs; once the domain is bought, `hello@littlesummit.app` is the natural contact address (your call). 🧑
 - [ ] Add App Store and website links to the app grid as each app ships 🤖
-- [ ] Branding round, as planned: icons for Bellwether and CellarStories (HLB's is done) 🤝
+- [x] Branding round: icons for Bellwether (a silent bell with haptic buzz marks, nmuschin/Bellwether#2) and CellarStories (a bottle whose label is an open notebook, nmuschin/CellarStories#3), each in its own colour. Merged 2026-11-19; check them on your Mac 🤝
 - [x] **Shared working preferences in every repo.** A short "Working preferences" section in each of the 14 repos' `CLAUDE.md`, pointing at the full version in nmuschin/CodeAI. Merged 2026-11-05. 🤖
 - [ ] Delete the leftover branches (rechecked 2026-11-18; the "Delete branch" button on each merged PR, since I can't delete branches from a session): `claude/little-summit-labs` and `claude/todo-quotebloom-sync` (switchbacklabs), `claude/little-summit-labs` (CodeAI), `claude/android-plan-docs` (HLB), `milestone/msl-personal` (JobTrack, already on `main`). Branches with open PRs go once those merge. 🧑
 - [x] Netmap's default branch renamed from `claude/confident-bohr-i73ycp` to `main` (2026-11-10) 🧑

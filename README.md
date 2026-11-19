@@ -47,4 +47,4 @@ The script downloads Plus Jakarta Sans into `tools/.fonts/` (git-ignored), outli
 
 ## Adding an app
 
-Copy one `<li class="app">` block in `index.html`, then add a 256×256 PNG icon in `assets/apps/`. Apps without an icon yet can use the `icon-placeholder` block, as Bellwether does.
+Copy one `<li class="app">` block in `index.html`, then add a 256×256 PNG icon in `assets/apps/`. Apps without an icon yet can use the `icon-placeholder` block (styled in `styles.css`).
