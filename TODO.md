@@ -2,7 +2,7 @@
 
 *This file is public on the studio site, like everything in this repo.*
 
-Built on 2026-11-05 (last updated 2026-11-20: netmap's merged roadmap work and #11; Android Studio installed; branch clean-up. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 14 repos; netmap and diabetes-project were added on 2026-11-05.
+Built on 2026-11-05 (last updated 2026-11-20: netmap's merged roadmap work and #11; Android Studio installed; branch clean-up; repo renamed littlesummitlabs. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 14 repos; netmap and diabetes-project were added on 2026-11-05.
 
 **How it's ordered:** first fixes for problems people can hit today, then apps that are built and only need launch steps, then feature work. Within each tier, the item that finishes an app comes before the one that starts something new.
 
@@ -25,7 +25,7 @@ Built on 2026-11-05 (last updated 2026-11-20: netmap's merged roadmap work and #
 - [x] **Studio name: Little Summit Labs** (decided 2026-11-18; formerly Switchback Labs), with the summit mark (a mountain with the trail cut into it) on the indigo tile. No matches in the USPTO wordmark search or the Oklahoma business entity search. New brand kit and site in nmuschin/switchbacklabs#13. 🤝
 - [ ] **Buy the domains:** `littlesummit.app` (the main one) and `littlesummitlabs.com` (redirects to it); both were available on 2026-11-13. Turn on WHOIS privacy. Then forward `hello@` to Gmail, point GitHub Pages at `littlesummit.app`, and update the site's `og:url` and `og:image` tags 🧑
 - [ ] **Form Little Summit Labs LLC** in Oklahoma, with a registered agent so your home address stays off the filing, then the EIN and D-U-N-S number (steps in the developer-account item above) 🧑
-- [ ] Optional: rename the GitHub repo `switchbacklabs` to `littlesummitlabs` (Settings → General). GitHub redirects the old address; the Pages address changes until the custom domain is set 🧑
+- [x] Renamed the GitHub repo `switchbacklabs` to `littlesummitlabs` (2026-11-20). The site moved to https://nmuschin.github.io/littlesummitlabs/ and its link-preview tags now point there; links to the old repo name redirect 🧑
 - [x] **App Store Connect records** for High Low Buffalo, QuoteBloom, Cite It Right, CellarStories and FuelTrack (as "FuelTrack: Gas & Mileage Log"), created 2026-11-10. They're on the individual account for now; see the item above. 🧑
 - [ ] **The rest of the Apple paperwork:** the Developer ID certificate and `notarytool` profile (MarkdownDoctor). Do this on the organization account if it's ready, since the certificate carries the account's name. 🧑
 
@@ -50,7 +50,7 @@ Everything for 1.0 is done except the listing.
 - [ ] Screenshots (iPhone, iPad, Mac) 🧑
 - [ ] Description, using the draft in `docs/app-store-listing.md` 🤝
 - [x] CloudKit schema in Production (done 2026-11-08): `UserQuote` and `Favorite`, each with a QUERYABLE `recordName` index, which the app's fetch-all sync queries need 🧑
-- [ ] Privacy policy page declaring CloudKit and local notifications: `/privacy/quotebloom.html` in switchbacklabs#3 🤝
+- [ ] Privacy policy page declaring CloudKit and local notifications: `/privacy/quotebloom.html` in littlesummitlabs#3 🤝
 - [x] iCloud sync is more forgiving: unsent changes are queued and retried, errors show in Settings, and a missing record type no longer fails the sync. The same PR fixed favorites not redrawing on iOS and macOS. Merged in nmuschin/QuoteBloom#3, tested on both platforms 2026-11-08 🤝
 - [ ] Optional, after launch: a Mac widget. The widget code already handles macOS; the target needs macOS added, the App Sandbox entitlement and the Mac runpath. 🤖
 
@@ -161,7 +161,7 @@ State variation in Medicaid GLP-1 use against diabetes burden. Not an app, so it
 
 ## Studio (Little Summit Labs)
 
-- [ ] **Privacy policy and support pages.** Written in nmuschin/switchbacklabs#3 (draft) for QuoteBloom, FuelTrack, DateGlow, Bellwether, MarkdownDoctor and CellarStories, plus `/support.html`. Waiting on a contact email to replace the `CONTACT_EMAIL` placeholder. They also need renaming from Switchback Labs to Little Summit Labs; once the domain is bought, `hello@littlesummit.app` is the natural contact address (your call). 🧑
+- [ ] **Privacy policy and support pages.** Written in nmuschin/littlesummitlabs#3 (draft) for QuoteBloom, FuelTrack, DateGlow, Bellwether, MarkdownDoctor and CellarStories, plus `/support.html`. Waiting on a contact email to replace the `CONTACT_EMAIL` placeholder. They also need renaming from Switchback Labs to Little Summit Labs; once the domain is bought, `hello@littlesummit.app` is the natural contact address (your call). 🧑
 - [ ] Add App Store and website links to the app grid as each app ships 🤖
 - [x] Branding round: icons for Bellwether (a silent bell with haptic buzz marks, nmuschin/Bellwether#2) and CellarStories (a bottle whose label is an open notebook, nmuschin/CellarStories#3), each in its own colour. Merged 2026-11-19; check them on your Mac 🤝
 - [x] **Shared working preferences in every repo.** A short "Working preferences" section in each of the 14 repos' `CLAUDE.md`, pointing at the full version in nmuschin/CodeAI. Merged 2026-11-05. 🤖
@@ -227,7 +227,7 @@ JobTrack's distribution decision and 0.6 polish, DateGlow widgets, the Bellwethe
 
 ## Quick reference
 
-- Studio site: https://nmuschin.github.io/switchbacklabs/ (brand page at `/brand.html`)
+- Studio site: https://nmuschin.github.io/littlesummitlabs/ (brand page at `/brand.html`); repo `nmuschin/littlesummitlabs` (renamed from `switchbacklabs` on 2026-11-20)
 - Live web apps: High Low Buffalo at https://www.highlowbuffaloapp.com, CellarStories at https://cellarstories.app, Cite It Right at https://citeitright.org
 - Email (Resend, sending only): `updates.cellarstories.app`, `updates.waymarkstudy.com`, `highlowbuffaloapp.com`. `hello@highlowbuffaloapp.com` forwards to Gmail.
 - iCloud apps that need a CloudKit schema in Production: JobTrack, Netmap. Done: QuoteBloom, FuelTrack, DateGlow, CellarStories. To check one: CloudKit Console → container → switch the P/D badge at the top → Schema → Record Types; Production should list the app's types, not just the built-in `Users`.
