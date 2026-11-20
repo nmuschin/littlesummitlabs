@@ -15,7 +15,7 @@ python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
-All paths are relative, so the site works both at `https://nmuschin.github.io/switchbacklabs/` and on a custom domain. The `og:url` and `og:image` tags in `index.html` and `brand.html` are absolute and need updating if the domain changes (planned: `littlesummit.app`).
+All paths are relative, so the site works both at `https://nmuschin.github.io/littlesummitlabs/` and on a custom domain. The `og:url` and `og:image` tags in `index.html` and `brand.html` are absolute and need updating if the domain changes (planned: `littlesummit.app`).
 
 ## Brand files
 
