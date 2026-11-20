@@ -2,12 +2,12 @@
 
 *This file is public on the studio site, like everything in this repo.*
 
-Built on 2026-11-05 (last updated 2026-11-20: netmap's merged roadmap work. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 14 repos; netmap and diabetes-project were added on 2026-11-05.
+Built on 2026-11-05 (last updated 2026-11-20: netmap's merged roadmap work and #11; Android Studio installed; branch clean-up. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 14 repos; netmap and diabetes-project were added on 2026-11-05.
 
 **How it's ordered:** first fixes for problems people can hit today, then apps that are built and only need launch steps, then feature work. Within each tier, the item that finishes an app comes before the one that starts something new.
 
 **Who does it:**
-- 🧑 You: Apple Developer portal, App Store Connect, Xcode on a Mac, real devices, dashboards.
+- 🧑 You: Apple Developer portal, App Store Connect, Xcode and Android Studio on your Mac, real devices, dashboards.
 - 🤖 Me: code, docs and pages I can do from a session.
 - 🤝 Both: I prepare it and you finish it.
 
@@ -42,7 +42,7 @@ Web is live. iOS milestones I0–I6 and Phase 2 (Friends, History, Settings, Wid
 - [ ] **Open the app straight away on launch** (nmuschin/HighLowBuffalo#21): build it, run the tests, and check a launch after 10 idle minutes and one in Airplane Mode, then merge. Launch still felt slow from Xcode; check from the Home Screen or TestFlight 🧑
 - [x] Icon: the same bison on a terracotta gradient tile (option 1, kept simple while the studio name may still change). Merged in nmuschin/HighLowBuffalo#20 on 2026-11-06 🤝
 - [x] Check the new icon on your Mac: the in-app logo, the Home Screen app icon and the site's favicon (checked 2026-11-19) 🧑
-- [ ] After iPhone v1.0 ships: **Android.** The plan is merged (`PLAN-android.md`, nmuschin/HighLowBuffalo#23). The shared contract and the Android backend (S0, A0) are built and tested in draft nmuschin/HighLowBuffalo#22, held so nothing changes on the server during the TestFlight beta. Then phases A1 onward (Kotlin + Compose, needs Android Studio) 🤝
+- [ ] After iPhone v1.0 ships: **Android.** The plan is merged (`PLAN-android.md`, nmuschin/HighLowBuffalo#23). The shared contract and the Android backend (S0, A0) are built and tested in draft nmuschin/HighLowBuffalo#22, held so nothing changes on the server during the TestFlight beta. Then phases A1 onward (Kotlin + Compose; Android Studio is installed on your Mac as of 2026-11-20) 🤝
 
 ### 2. QuoteBloom
 Everything for 1.0 is done except the listing.
@@ -140,7 +140,8 @@ Phases 1–3 are written. The Swift package compiles and its tests pass (nmuschi
 - [ ] **Build the Mac app again** with #5–#10 in it, and fix what that turns up 🤝
 - [ ] Build and run the iPhone app on a device 🧑
 - [ ] iCloud setup per `docs/CLOUDKIT.md`: container ID, the queryable index, deploy the schema to Production, APNs environment 🧑
-- [ ] Roadmap 4 and 5: watching URLs (with certificate-expiry warnings), then Shortcuts and Siri 🤖
+- [ ] Roadmap 4, watching websites alongside devices (with certificate-expiry warnings): built in nmuschin/netmap#11, open. Review, build and merge 🧑
+- [ ] Roadmap 5: Shortcuts and Siri 🤖
 - [ ] Phase 4, later: device names from Bonjour during a scan, and optionally a signed privileged helper for SYN scans and reading the ARP table 🤖
 - [ ] App icons and asset catalogs 🤝
 - [ ] Later: a headless watcher executable (`NetmapWatch` is already UI-free), the full IEEE vendor list instead of the seed `OUIDatabase`, and two-way device-settings sync 🤖
@@ -164,7 +165,7 @@ State variation in Medicaid GLP-1 use against diabetes burden. Not an app, so it
 - [ ] Add App Store and website links to the app grid as each app ships 🤖
 - [x] Branding round: icons for Bellwether (a silent bell with haptic buzz marks, nmuschin/Bellwether#2) and CellarStories (a bottle whose label is an open notebook, nmuschin/CellarStories#3), each in its own colour. Merged 2026-11-19; check them on your Mac 🤝
 - [x] **Shared working preferences in every repo.** A short "Working preferences" section in each of the 14 repos' `CLAUDE.md`, pointing at the full version in nmuschin/CodeAI. Merged 2026-11-05. 🤖
-- [ ] Delete the leftover branches (rechecked 2026-11-18; the "Delete branch" button on each merged PR, since I can't delete branches from a session): `claude/little-summit-labs` and `claude/todo-quotebloom-sync` (switchbacklabs), `claude/little-summit-labs` (CodeAI), `claude/android-plan-docs` (HLB), `milestone/msl-personal` (JobTrack, already on `main`). Branches with open PRs go once those merge. 🧑
+- [ ] Delete the leftover branch `milestone/msl-personal` (JobTrack): everything on it is already on `main`, and with no PR it's deleted from the repo's Branches page (rechecked 2026-11-20). Branches with open PRs go once those merge. 🧑
 - [x] Netmap's default branch renamed from `claude/confident-bohr-i73ycp` to `main` (2026-11-10) 🧑
 
 ---
