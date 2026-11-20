@@ -2,7 +2,7 @@
 
 *This file is public on the studio site, like everything in this repo.*
 
-Built on 2026-11-05 (last updated 2026-11-19: Bellwether and CellarStories icons; netmap's progress. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 14 repos; netmap and diabetes-project were added on 2026-11-05.
+Built on 2026-11-05 (last updated 2026-11-20: netmap's merged roadmap work. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 14 repos; netmap and diabetes-project were added on 2026-11-05.
 
 **How it's ordered:** first fixes for problems people can hit today, then apps that are built and only need launch steps, then feature work. Within each tier, the item that finishes an app comes before the one that starts something new.
 
@@ -127,17 +127,21 @@ Every module in `PLAN.md`'s build order is built, and there's no open backlog.
 - [ ] Link-preview image, once you share the production URL 🤖
 
 ### 12. Netmap (Mac + iPhone network scanner)
-Phases 1–3 are written. The Swift package compiles and its tests pass (nmuschin/netmap#2), **the Mac app runs on your network**: onboarding finds Home Assistant by its own announcement (#3), and the scanner is wired into both apps (#4). Phase 4 changed: **no nmap** (macOS blocks its unsigned installer); the built-in scanner gets deeper instead (#5). The plan is `docs/ROADMAP.md`.
+Phases 1–3 are written. The Swift package compiles and its tests pass (nmuschin/netmap#2), and **the Mac app runs on your network**: onboarding finds Home Assistant by its own announcement (#3), and the scanner is wired into both apps (#4). Phase 4 changed: **no nmap** (macOS blocks its unsigned installer); the built-in scanner went deeper instead. The plan is `docs/ROADMAP.md`. The work merged on 2026-11-19 and 20 (#5–#10) hasn't been compiled on a Mac yet.
 - [x] Confirm the assumptions on your network (Home Assistant found by its announcement, on port 80 rather than 8123; nmuschin/netmap#3) 🧑
 - [x] First build of the package: `swift build` and `swift test` pass (nmuschin/netmap#2, 2026-11-16) 🤝
 - [x] Build and run the Mac app (nmuschin/netmap#3, #4) 🤝
-- [ ] Build and run the iPhone app on a device 🧑
 - [x] Wire the scan screens into both apps' navigation (nmuschin/netmap#4) 🤖
-- [ ] Merge nmuschin/netmap#8: the README's status now says the package compiles and the Mac app runs (it still said "uncompiled") 🧑
+- [x] README status: the package compiles and the Mac app runs (nmuschin/netmap#8, merged 2026-11-20) 🤖
+- [x] Phase 4: built-in scanner depth instead of nmap: services identified from their replies, TLS certificates, ~150 ranked ports, several hosts at once, a native "Thorough scan" (nmuschin/netmap#5) 🤖
+- [x] "Skip host discovery" (`-Pn`) now works in the built-in scanner (nmuschin/netmap#6), with a fix to the port-scan progress count (#9) 🤖
+- [x] Roadmap 2: flag risky services in scan results (nmuschin/netmap#7) 🤖
+- [x] Roadmap 3: a Bonjour browser for announced services (nmuschin/netmap#10) 🤖
+- [ ] **Build the Mac app again** with #5–#10 in it, and fix what that turns up 🤝
+- [ ] Build and run the iPhone app on a device 🧑
 - [ ] iCloud setup per `docs/CLOUDKIT.md`: container ID, the queryable index, deploy the schema to Production, APNs environment 🧑
-- [ ] Review the open PRs: honour "Skip host discovery" (-Pn) in the native engine (#6) and flag risky services in scan results (#7) 🧑
-- [ ] Roadmap item 1, built-in scanner depth (in progress): name services from their replies, read TLS certificates, ~150 ranked ports, scan several hosts at once, a native "Thorough scan" 🤖
-- [ ] Roadmap items 3–5: a Bonjour browser, watching URLs (with certificate-expiry warnings), and Shortcuts and Siri 🤖
+- [ ] Roadmap 4 and 5: watching URLs (with certificate-expiry warnings), then Shortcuts and Siri 🤖
+- [ ] Phase 4, later: device names from Bonjour during a scan, and optionally a signed privileged helper for SYN scans and reading the ARP table 🤖
 - [ ] App icons and asset catalogs 🤝
 - [ ] Later: a headless watcher executable (`NetmapWatch` is already UI-free), the full IEEE vendor list instead of the seed `OUIDatabase`, and two-way device-settings sync 🤖
 
