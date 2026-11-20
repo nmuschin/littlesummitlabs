@@ -128,6 +128,7 @@ Phases 1–3 are written (presence monitoring for the Home Assistant Pi, history
 - [x] Wire the scan screens (`ScanView`, `ScanResultsView`, `ScanDiffView`) into both apps' navigation. Done in nmuschin/netmap#4, merged 2026-11-19; not compiled yet, so it's covered by the first-build item above 🤖
 - [ ] App icons and asset catalogs 🤝
 - [x] Phase 4: built-in scanner depth instead of an nmap engine. nmap is dropped because macOS blocks its installer (not notarized). Service identification from responses, TLS certificates, ~150 ranked ports and parallel host scanning are done in nmuschin/netmap#5, merged 2026-11-19; not compiled on a Mac yet 🤖
+- [x] "Skip host discovery" (`-Pn`) now works in the built-in scanner; it was shown in the scan options but did nothing. Done in nmuschin/netmap#6, merged 2026-11-20, with a fix to the port-scan progress count in nmuschin/netmap#9; not compiled on a Mac yet 🤖
 - [ ] Phase 4, later: device names from Bonjour during a scan (fits the Bonjour browser), and optionally a signed privileged helper for SYN scans and reading the ARP table 🤖
 - [ ] Phase 5: a headless watcher executable (`NetmapWatch` is already UI-free) 🤖
 - [ ] Later: the full IEEE vendor list instead of the seed `OUIDatabase`, and two-way device-settings sync 🤖
