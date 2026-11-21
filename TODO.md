@@ -2,7 +2,7 @@
 
 *This file is public on the studio site, like everything in this repo.*
 
-Built on 2026-11-05 (last updated 2026-11-20: netmap's merged roadmap work and #11; Android Studio installed; branch clean-up; repo renamed littlesummitlabs. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 14 repos; netmap and diabetes-project were added on 2026-11-05.
+Built on 2026-11-05 (last updated 2026-11-21: every repo rechecked, nothing new merged; hardware builds added; plan pushed back a week. 2026-11-20: netmap's merged roadmap work and #11; Android Studio installed; branch clean-up; repo renamed littlesummitlabs. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 16 repos; netmap and diabetes-project were added on 2026-11-05, and the two hardware builds on 2026-11-21.
 
 **How it's ordered:** first fixes for problems people can hit today, then apps that are built and only need launch steps, then feature work. Within each tier, the item that finishes an app comes before the one that starts something new.
 
@@ -159,10 +159,17 @@ State variation in Medicaid GLP-1 use against diabetes burden. Not an app, so it
 - [ ] Archive a release (for example on Zenodo) and cite the DOI; then post to medRxiv 🧑
 - [ ] Should do: a published weight-management coverage list instead of the proxy, the quarterly sensitivity analysis, a methods read by a biostatistician, and trimming the abstract to the venue's limit 🤝
 
+### Hardware builds (CAD Mouse MK2, Focus Dial)
+Copies of Salim Benbouziyane's open hardware projects, unchanged so far (CC BY-NC-SA 4.0: fine for personal builds, but nothing made from them can be sold). Build guides are on Instructables, linked from each README.
+- [ ] Decide whether and when to build them; nothing in the studio depends on them 🧑
+- [ ] CAD Mouse MK2: order the PCB and parts from `bom/`, print the enclosure and spring (the README warns the PETG spring may wear out), flash the firmware with PlatformIO 🧑
+- [ ] Focus Dial: build it, then point its webhook at your Home Assistant for the focus-mode scenes (the same Pi Netmap watches) 🤝
+
 ## Studio (Little Summit Labs)
 
 - [ ] **Privacy policy and support pages.** Written in nmuschin/littlesummitlabs#3 (draft) for QuoteBloom, FuelTrack, DateGlow, Bellwether, MarkdownDoctor and CellarStories, plus `/support.html`. Waiting on a contact email to replace the `CONTACT_EMAIL` placeholder. They also need renaming from Switchback Labs to Little Summit Labs; once the domain is bought, `hello@littlesummit.app` is the natural contact address (your call). 🧑
 - [ ] Add App Store and website links to the app grid as each app ships 🤖
+- [ ] Follow the repo rename everywhere else: every repo's `CLAUDE.md` still says the to-do list is in `nmuschin/switchbacklabs`, and CodeAI's says the studio repo "is still named" that (the old address redirects, so nothing is broken) 🤖
 - [x] Branding round: icons for Bellwether (a silent bell with haptic buzz marks, nmuschin/Bellwether#2) and CellarStories (a bottle whose label is an open notebook, nmuschin/CellarStories#3), each in its own colour. Merged 2026-11-19; check them on your Mac 🤝
 - [x] **Shared working preferences in every repo.** A short "Working preferences" section in each of the 14 repos' `CLAUDE.md`, pointing at the full version in nmuschin/CodeAI. Merged 2026-11-05. 🤖
 - [ ] Delete the leftover branch `milestone/msl-personal` (JobTrack): everything on it is already on `main`, and with no PR it's deleted from the repo's Branches page (rechecked 2026-11-20). Branches with open PRs go once those merge. 🧑
@@ -174,7 +181,7 @@ State variation in Medicaid GLP-1 use against diabetes burden. Not an app, so it
 
 Rough times, assuming evenings and weekends. Each week ends with something shipped or submitted. If a week slips, push the whole plan back a week rather than starting the next app early.
 
-**Where things stand (Nov 18):** week 1 is done apart from the domains, the LLC and the Developer ID certificate. In week 2, HLB is on TestFlight with its demo account; push notifications still need the key re-pasted. Public releases wait for the organization account, so each app's "submit" step means **ready to submit** until then: TestFlight, screenshots and listing in place.
+**Where things stand (Nov 21):** week 1 is done apart from the domains, the LLC and the Developer ID certificate. Week 2 is partly done: HLB is on TestFlight with its demo account, but the push key, review notes and screenshots are still open, and so are QuoteBloom's screenshots and description. Week 3 didn't start, so from week 3 on **the plan moved back a week** (2026-11-21). Public releases wait for the organization account, so each app's "submit" step means **ready to submit** until then: TestFlight, screenshots and listing in place.
 
 ### Week 1 · Nov 5–8 · decisions and paperwork (~3 h)
 1. ~~Waymark Study: set `MAIL_FROM` and `APP_URL` on the host~~ (already set).
@@ -188,20 +195,21 @@ Get each app ready to submit, but hold the public release until the organization
 2. QuoteBloom: screenshots for iPhone, iPad and Mac, description from the draft, submit.
 3. Studio: once the contact email is chosen, merge the privacy and support pages so both apps have their URLs.
 
-### Week 3 · Nov 16–22 · Cite It Right and MarkdownDoctor (~6 h)
+### Week 3 · Nov 23–29 · Cite It Right and MarkdownDoctor (~6 h; Thanksgiving week)
+Finish week 2's leftovers first if you can (HLB push key, QuoteBloom screenshots).
 1. Cite It Right: ~~first phase-6 build in Xcode, camera test on a real iPhone~~ (done); merge #6, then TestFlight.
 2. MarkdownDoctor: run `Scripts/release.sh`, publish the DMG, add it to the site. The Developer ID certificate carries the account's name, so do this on the organization account if it's ready.
 
-### Week 4 · Nov 23–29 · CellarStories (lighter week: Thanksgiving)
+### Week 4 · Nov 30–Dec 6 · CellarStories
 1. Import your real journal, run the live acceptance test with a friend, test iCloud sync across devices.
 2. Screenshots, 17+ age rating, submit.
 
-### Week 5 · Nov 30–Dec 6 · FuelTrack
+### Week 5 · Dec 7–13 · FuelTrack
 1. Check receipt scanning and CSV import, fix the slow first switch to Map or Stats, more parser test fixtures.
 2. Check the icon at every size, screenshots, submit.
 
-### December · feature work
-JobTrack's distribution decision and 0.6 polish, DateGlow widgets, the Bellwether icon and schedule import, and Netmap's first build.
+### From Dec 14 · feature work
+JobTrack's distribution decision and 0.6 polish, DateGlow widgets, Bellwether's schedule import, and Netmap's Mac rebuild with #5–#11.
 
 ## App Store submission checklist (use for every app)
 
