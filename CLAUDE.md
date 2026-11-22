@@ -6,4 +6,4 @@ These apply across all my repos; the full version (the studio, every repo, envir
 - **Ask clarifying questions** when a request is ambiguous; keep explanations clear and short.
 - **Branch and PR for every change**, saying what changed and how it was checked. I usually ask for the merge myself (squash).
 - **Say what you couldn't verify**, and tell me how to check it myself.
-- **The studio-wide to-do list** is `TODO.md` in nmuschin/switchbacklabs. When work here lands, tick it off there.
+- **The studio-wide to-do list** is `TODO.md` in nmuschin/littlesummitlabs. When work here lands, tick it off there.

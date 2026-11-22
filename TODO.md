@@ -2,12 +2,12 @@
 
 *This file is public on the studio site, like everything in this repo.*
 
-Built on 2026-11-05 (last updated 2026-11-20: netmap's merged roadmap work. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 14 repos; netmap and diabetes-project were added on 2026-11-05.
+Built on 2026-11-05 (last updated 2026-11-22: repo-rename references fixed in every repo. 2026-11-21: every repo rechecked, nothing new merged; hardware builds added; plan pushed back a week. 2026-11-20: netmap's merged roadmap work and #11; Android Studio installed; branch clean-up; repo renamed littlesummitlabs. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 16 repos; netmap and diabetes-project were added on 2026-11-05, and the two hardware builds on 2026-11-21.
 
 **How it's ordered:** first fixes for problems people can hit today, then apps that are built and only need launch steps, then feature work. Within each tier, the item that finishes an app comes before the one that starts something new.
 
 **Who does it:**
-- 🧑 You: Apple Developer portal, App Store Connect, Xcode on a Mac, real devices, dashboards.
+- 🧑 You: Apple Developer portal, App Store Connect, Xcode and Android Studio on your Mac, real devices, dashboards.
 - 🤖 Me: code, docs and pages I can do from a session.
 - 🤝 Both: I prepare it and you finish it.
 
@@ -25,7 +25,7 @@ Built on 2026-11-05 (last updated 2026-11-20: netmap's merged roadmap work. 2026
 - [x] **Studio name: Little Summit Labs** (decided 2026-11-18; formerly Switchback Labs), with the summit mark (a mountain with the trail cut into it) on the indigo tile. No matches in the USPTO wordmark search or the Oklahoma business entity search. New brand kit and site in nmuschin/switchbacklabs#13. 🤝
 - [ ] **Buy the domains:** `littlesummit.app` (the main one) and `littlesummitlabs.com` (redirects to it); both were available on 2026-11-13. Turn on WHOIS privacy. Then forward `hello@` to Gmail, point GitHub Pages at `littlesummit.app`, and update the site's `og:url` and `og:image` tags 🧑
 - [ ] **Form Little Summit Labs LLC** in Oklahoma, with a registered agent so your home address stays off the filing, then the EIN and D-U-N-S number (steps in the developer-account item above) 🧑
-- [ ] Optional: rename the GitHub repo `switchbacklabs` to `littlesummitlabs` (Settings → General). GitHub redirects the old address; the Pages address changes until the custom domain is set 🧑
+- [x] Renamed the GitHub repo `switchbacklabs` to `littlesummitlabs` (2026-11-20). The site moved to https://nmuschin.github.io/littlesummitlabs/ and its link-preview tags now point there; links to the old repo name redirect 🧑
 - [x] **App Store Connect records** for High Low Buffalo, QuoteBloom, Cite It Right, CellarStories and FuelTrack (as "FuelTrack: Gas & Mileage Log"), created 2026-11-10. They're on the individual account for now; see the item above. 🧑
 - [ ] **The rest of the Apple paperwork:** the Developer ID certificate and `notarytool` profile (MarkdownDoctor). Do this on the organization account if it's ready, since the certificate carries the account's name. 🧑
 
@@ -42,7 +42,7 @@ Web is live. iOS milestones I0–I6 and Phase 2 (Friends, History, Settings, Wid
 - [ ] **Open the app straight away on launch** (nmuschin/HighLowBuffalo#21): build it, run the tests, and check a launch after 10 idle minutes and one in Airplane Mode, then merge. Launch still felt slow from Xcode; check from the Home Screen or TestFlight 🧑
 - [x] Icon: the same bison on a terracotta gradient tile (option 1, kept simple while the studio name may still change). Merged in nmuschin/HighLowBuffalo#20 on 2026-11-06 🤝
 - [x] Check the new icon on your Mac: the in-app logo, the Home Screen app icon and the site's favicon (checked 2026-11-19) 🧑
-- [ ] After iPhone v1.0 ships: **Android.** The plan is merged (`PLAN-android.md`, nmuschin/HighLowBuffalo#23). The shared contract and the Android backend (S0, A0) are built and tested in draft nmuschin/HighLowBuffalo#22, held so nothing changes on the server during the TestFlight beta. Then phases A1 onward (Kotlin + Compose, needs Android Studio) 🤝
+- [ ] After iPhone v1.0 ships: **Android.** The plan is merged (`PLAN-android.md`, nmuschin/HighLowBuffalo#23). The shared contract and the Android backend (S0, A0) are built and tested in draft nmuschin/HighLowBuffalo#22, held so nothing changes on the server during the TestFlight beta. Then phases A1 onward (Kotlin + Compose; Android Studio is installed on your Mac as of 2026-11-20) 🤝
 
 ### 2. QuoteBloom
 Everything for 1.0 is done except the listing.
@@ -50,7 +50,7 @@ Everything for 1.0 is done except the listing.
 - [ ] Screenshots (iPhone, iPad, Mac) 🧑
 - [ ] Description, using the draft in `docs/app-store-listing.md` 🤝
 - [x] CloudKit schema in Production (done 2026-11-08): `UserQuote` and `Favorite`, each with a QUERYABLE `recordName` index, which the app's fetch-all sync queries need 🧑
-- [ ] Privacy policy page declaring CloudKit and local notifications: `/privacy/quotebloom.html` in switchbacklabs#3 🤝
+- [ ] Privacy policy page declaring CloudKit and local notifications: `/privacy/quotebloom.html` in littlesummitlabs#3 🤝
 - [x] iCloud sync is more forgiving: unsent changes are queued and retried, errors show in Settings, and a missing record type no longer fails the sync. The same PR fixed favorites not redrawing on iOS and macOS. Merged in nmuschin/QuoteBloom#3, tested on both platforms 2026-11-08 🤝
 - [ ] Optional, after launch: a Mac widget. The widget code already handles macOS; the target needs macOS added, the App Sandbox entitlement and the Mac runpath. 🤖
 
@@ -140,7 +140,8 @@ Phases 1–3 are written. The Swift package compiles and its tests pass (nmuschi
 - [ ] **Build the Mac app again** with #5–#10 in it, and fix what that turns up 🤝
 - [ ] Build and run the iPhone app on a device 🧑
 - [ ] iCloud setup per `docs/CLOUDKIT.md`: container ID, the queryable index, deploy the schema to Production, APNs environment 🧑
-- [ ] Roadmap 4 and 5: watching URLs (with certificate-expiry warnings), then Shortcuts and Siri 🤖
+- [ ] Roadmap 4, watching websites alongside devices (with certificate-expiry warnings): built in nmuschin/netmap#11, open. Review, build and merge 🧑
+- [ ] Roadmap 5: Shortcuts and Siri 🤖
 - [ ] Phase 4, later: device names from Bonjour during a scan, and optionally a signed privileged helper for SYN scans and reading the ARP table 🤖
 - [ ] App icons and asset catalogs 🤝
 - [ ] Later: a headless watcher executable (`NetmapWatch` is already UI-free), the full IEEE vendor list instead of the seed `OUIDatabase`, and two-way device-settings sync 🤖
@@ -158,13 +159,21 @@ State variation in Medicaid GLP-1 use against diabetes burden. Not an app, so it
 - [ ] Archive a release (for example on Zenodo) and cite the DOI; then post to medRxiv 🧑
 - [ ] Should do: a published weight-management coverage list instead of the proxy, the quarterly sensitivity analysis, a methods read by a biostatistician, and trimming the abstract to the venue's limit 🤝
 
+### Hardware builds (CAD Mouse MK2, Focus Dial)
+Copies of Salim Benbouziyane's open hardware projects, unchanged so far (CC BY-NC-SA 4.0: fine for personal builds, but nothing made from them can be sold). Build guides are on Instructables, linked from each README.
+- [ ] Decide whether and when to build them; nothing in the studio depends on them 🧑
+- [ ] CAD Mouse MK2: order the PCB and parts from `bom/`, print the enclosure and spring (the README warns the PETG spring may wear out), flash the firmware with PlatformIO 🧑
+- [ ] Focus Dial: build it, then point its webhook at your Home Assistant for the focus-mode scenes (the same Pi Netmap watches) 🤝
+
 ## Studio (Little Summit Labs)
 
-- [ ] **Privacy policy and support pages.** Written in nmuschin/switchbacklabs#3 (draft) for QuoteBloom, FuelTrack, DateGlow, Bellwether, MarkdownDoctor and CellarStories, plus `/support.html`. Waiting on a contact email to replace the `CONTACT_EMAIL` placeholder. They also need renaming from Switchback Labs to Little Summit Labs; once the domain is bought, `hello@littlesummit.app` is the natural contact address (your call). 🧑
+- [ ] **Privacy policy and support pages.** Written in nmuschin/littlesummitlabs#3 (draft) for QuoteBloom, FuelTrack, DateGlow, Bellwether, MarkdownDoctor and CellarStories, plus `/support.html`. Waiting on a contact email to replace the `CONTACT_EMAIL` placeholder. They also need renaming from Switchback Labs to Little Summit Labs; once the domain is bought, `hello@littlesummit.app` is the natural contact address (your call). 🧑
 - [ ] Add App Store and website links to the app grid as each app ships 🤖
+- [x] Followed the repo rename everywhere else: a one-line `CLAUDE.md` fix in each of 13 repos, plus CodeAI's `CLAUDE.md` and scripts (nmuschin/CodeAI#5), merged 2026-11-22 🤖
+- [ ] On your Mac, rename a local `switchbacklabs` clone folder to `littlesummitlabs`, so CodeAI's `render_app_icons.js` finds the Waymark Study icon 🧑
 - [x] Branding round: icons for Bellwether (a silent bell with haptic buzz marks, nmuschin/Bellwether#2) and CellarStories (a bottle whose label is an open notebook, nmuschin/CellarStories#3), each in its own colour. Merged 2026-11-19; check them on your Mac 🤝
 - [x] **Shared working preferences in every repo.** A short "Working preferences" section in each of the 14 repos' `CLAUDE.md`, pointing at the full version in nmuschin/CodeAI. Merged 2026-11-05. 🤖
-- [ ] Delete the leftover branches (rechecked 2026-11-18; the "Delete branch" button on each merged PR, since I can't delete branches from a session): `claude/little-summit-labs` and `claude/todo-quotebloom-sync` (switchbacklabs), `claude/little-summit-labs` (CodeAI), `claude/android-plan-docs` (HLB), `milestone/msl-personal` (JobTrack, already on `main`). Branches with open PRs go once those merge. 🧑
+- [ ] Delete the leftover branch `milestone/msl-personal` (JobTrack): everything on it is already on `main`, and with no PR it's deleted from the repo's Branches page (rechecked 2026-11-20). Branches with open PRs go once those merge. 🧑
 - [x] Netmap's default branch renamed from `claude/confident-bohr-i73ycp` to `main` (2026-11-10) 🧑
 
 ---
@@ -173,7 +182,7 @@ State variation in Medicaid GLP-1 use against diabetes burden. Not an app, so it
 
 Rough times, assuming evenings and weekends. Each week ends with something shipped or submitted. If a week slips, push the whole plan back a week rather than starting the next app early.
 
-**Where things stand (Nov 18):** week 1 is done apart from the domains, the LLC and the Developer ID certificate. In week 2, HLB is on TestFlight with its demo account; push notifications still need the key re-pasted. Public releases wait for the organization account, so each app's "submit" step means **ready to submit** until then: TestFlight, screenshots and listing in place.
+**Where things stand (Nov 21):** week 1 is done apart from the domains, the LLC and the Developer ID certificate. Week 2 is partly done: HLB is on TestFlight with its demo account, but the push key, review notes and screenshots are still open, and so are QuoteBloom's screenshots and description. Week 3 didn't start, so from week 3 on **the plan moved back a week** (2026-11-21). Public releases wait for the organization account, so each app's "submit" step means **ready to submit** until then: TestFlight, screenshots and listing in place.
 
 ### Week 1 · Nov 5–8 · decisions and paperwork (~3 h)
 1. ~~Waymark Study: set `MAIL_FROM` and `APP_URL` on the host~~ (already set).
@@ -187,20 +196,21 @@ Get each app ready to submit, but hold the public release until the organization
 2. QuoteBloom: screenshots for iPhone, iPad and Mac, description from the draft, submit.
 3. Studio: once the contact email is chosen, merge the privacy and support pages so both apps have their URLs.
 
-### Week 3 · Nov 16–22 · Cite It Right and MarkdownDoctor (~6 h)
+### Week 3 · Nov 23–29 · Cite It Right and MarkdownDoctor (~6 h; Thanksgiving week)
+Finish week 2's leftovers first if you can (HLB push key, QuoteBloom screenshots).
 1. Cite It Right: ~~first phase-6 build in Xcode, camera test on a real iPhone~~ (done); merge #6, then TestFlight.
 2. MarkdownDoctor: run `Scripts/release.sh`, publish the DMG, add it to the site. The Developer ID certificate carries the account's name, so do this on the organization account if it's ready.
 
-### Week 4 · Nov 23–29 · CellarStories (lighter week: Thanksgiving)
+### Week 4 · Nov 30–Dec 6 · CellarStories
 1. Import your real journal, run the live acceptance test with a friend, test iCloud sync across devices.
 2. Screenshots, 17+ age rating, submit.
 
-### Week 5 · Nov 30–Dec 6 · FuelTrack
+### Week 5 · Dec 7–13 · FuelTrack
 1. Check receipt scanning and CSV import, fix the slow first switch to Map or Stats, more parser test fixtures.
 2. Check the icon at every size, screenshots, submit.
 
-### December · feature work
-JobTrack's distribution decision and 0.6 polish, DateGlow widgets, the Bellwether icon and schedule import, and Netmap's first build.
+### From Dec 14 · feature work
+JobTrack's distribution decision and 0.6 polish, DateGlow widgets, Bellwether's schedule import, and Netmap's Mac rebuild with #5–#11.
 
 ## App Store submission checklist (use for every app)
 
@@ -226,7 +236,7 @@ JobTrack's distribution decision and 0.6 polish, DateGlow widgets, the Bellwethe
 
 ## Quick reference
 
-- Studio site: https://nmuschin.github.io/switchbacklabs/ (brand page at `/brand.html`)
+- Studio site: https://nmuschin.github.io/littlesummitlabs/ (brand page at `/brand.html`); repo `nmuschin/littlesummitlabs` (renamed from `switchbacklabs` on 2026-11-20)
 - Live web apps: High Low Buffalo at https://www.highlowbuffaloapp.com, CellarStories at https://cellarstories.app, Cite It Right at https://citeitright.org
 - Email (Resend, sending only): `updates.cellarstories.app`, `updates.waymarkstudy.com`, `highlowbuffaloapp.com`. `hello@highlowbuffaloapp.com` forwards to Gmail.
 - iCloud apps that need a CloudKit schema in Production: JobTrack, Netmap. Done: QuoteBloom, FuelTrack, DateGlow, CellarStories. To check one: CloudKit Console → container → switch the P/D badge at the top → Schema → Record Types; Production should list the app's types, not just the built-in `Users`.
