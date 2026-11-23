@@ -49,6 +49,8 @@ The gradient runs straight down, top to bottom.
 
 ## SwiftUI
 
+Use the shared file `brand/swift/LittleSummit.swift` instead of pasting this: it has these colours (under the same names), Dark Mode values, the type styles and every app's accent. The snippet is kept for reference.
+
 ```swift
 extension Color {
     static let littleSummitIndigoTop = Color(red: 0x6E/255, green: 0x7B/255, blue: 0xFF/255)

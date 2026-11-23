@@ -24,6 +24,8 @@ All paths are relative, so the site works both at `https://nmuschin.github.io/li
 | `brand/little-summit-labs/` | The studio mark (a mountain with the trail to the summit cut into it, a stop per project) on an indigo tile: lockups, app icon, favicons, social card and a README with colours and SwiftUI snippets |
 | `brand/waymark-study/` | Waymark Study's mark (the studio's original trail with stops, with stops spreading out like review intervals, ending at a waymark flag) on its terracotta, plus Next.js-ready icon files |
 
+| `brand/swift/` | `LittleSummit.swift`: the studio colours, gradient, type and every app's accent for SwiftUI apps. Copy it into an app target; no assets or packages needed |
+
 `brand.html` is the public brand page: previews, colours, usage notes and downloads. The one-click zips are in `brand/downloads/`.
 
 `assets/apps/` holds each app's current icon at 256 px, for the app grid.
