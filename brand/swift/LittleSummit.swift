@@ -85,10 +85,10 @@ public enum LittleSummit {
             case .highLowBuffalo: Color(lsLight: 0xC8553D, dark: 0xD9694F)    // terracotta, AccentColor asset
             case .citeItRight: Color(lsLight: 0x3B5BDB, dark: 0x7C96FF)       // blue, AccentColor asset
             case .markdownDoctor: Color(lsHex: 0x0A84FF)                      // blue, AccentColor asset (one value)
-            case .jobTrack, .fuelTrack, .bellwether, .quoteBloom, .dateGlow:
+            case .bellwether: Color(lsLight: 0x137A7E, dark: 0x30B4A3)        // teal from the icon (watch: the dark value)
+            case .cellarStories: Color(lsLight: 0x8C2240, dark: 0xD9668A)     // wine from the icon; the default of a user-chosen accent
+            case .jobTrack, .fuelTrack, .quoteBloom, .dateGlow:
                 nil                                                         // AccentColor asset left empty
-            case .cellarStories:
-                nil                                                         // user-chosen; defaults to system .pink
             }
         }
 
