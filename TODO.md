@@ -176,7 +176,8 @@ Copies of Salim Benbouziyane's open hardware projects, unchanged so far (CC BY-N
 - [ ] **Share the design system** from its page's Share menu (anyone with the link can view). Until then the "Open the design system" button on the public brand page doesn't open for visitors 🧑
 - [x] **Built `LittleSummit.swift` in Xcode** and checked its `#Preview` (2026-11-25). Delete an app's old copy-pasted `littleSummit` colour snippet when you add it, or the two clash 🧑
 - [x] **Accent colours from the icons** for Bellwether (teal `#137A7E`, dark and Watch `#30B4A3`, nmuschin/Bellwether#4) and CellarStories (wine `#8C2240`, dark `#D9668A`, a new default "Wine" choice, nmuschin/CellarStories#5), plus the Swift file. Checked on your Mac and merged 2026-11-25 🤝
-- [ ] Still on the system accent: JobTrack, FuelTrack, QuoteBloom and DateGlow. Suggested: QuoteBloom purple `#8547AB` from its icon; leave the other three as they are. Your call 🧑
+- [ ] **QuoteBloom accent:** the icon's purple (`#6E3EA6`, dark `#A47FD6`) in nmuschin/QuoteBloom#5, and in the Swift file. Build, check and merge 🧑
+- [x] JobTrack, FuelTrack and DateGlow stay on the system accent (decided 2026-11-25) 🧑
 - [x] **Shared working preferences in every repo.** A short "Working preferences" section in each of the 14 repos' `CLAUDE.md`, pointing at the full version in nmuschin/CodeAI. Merged 2026-11-05. 🤖
 - [ ] Delete the leftover branch `milestone/msl-personal` (JobTrack): everything on it is already on `main`, and with no PR it's deleted from the repo's Branches page (rechecked 2026-11-20). Branches with open PRs go once those merge. 🧑
 - [x] Netmap's default branch renamed from `claude/confident-bohr-i73ycp` to `main` (2026-11-10) 🧑
