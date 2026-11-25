@@ -31,7 +31,7 @@ build_kit() { # name prefix
   (cd "$dir/png" && convert favicon-16.png favicon-32.png favicon-48.png favicon.ico)
 }
 
-build_kit switchback-labs switchback
+build_kit little-summit-labs littlesummit
 build_kit waymark-study waymark
 
 # Waymark Study ships as a Next.js app; these names follow the App Router's metadata files.
@@ -43,16 +43,16 @@ cp brand/waymark-study/png/apple-touch-icon-180.png "$next/apple-icon.png"
 cp brand/waymark-study/png/social-card-1200x630.png "$next/opengraph-image.png"
 
 # The site's own icons and link-preview image.
-cp brand/switchback-labs/svg/favicon.svg favicon.svg
-cp brand/switchback-labs/png/favicon.ico favicon.ico
-cp brand/switchback-labs/png/apple-touch-icon-180.png apple-touch-icon.png
-cp brand/switchback-labs/png/social-card-1200x630.png assets/social-card.png
+cp brand/little-summit-labs/svg/favicon.svg favicon.svg
+cp brand/little-summit-labs/png/favicon.ico favicon.ico
+cp brand/little-summit-labs/png/apple-touch-icon-180.png apple-touch-icon.png
+cp brand/little-summit-labs/png/social-card-1200x630.png assets/social-card.png
 
 # One zip per kit for the brand page. -X leaves out extra file attributes.
 mkdir -p brand/downloads
-for kit in switchback-labs waymark-study; do
+for kit in little-summit-labs waymark-study; do
   rm -f "brand/downloads/$kit-brand.zip"
   (cd brand && zip -qrX "downloads/$kit-brand.zip" "$kit")
 done
 
-echo "Rebuilt brand/switchback-labs, brand/waymark-study, the site icons and brand/downloads."
+echo "Rebuilt brand/little-summit-labs, brand/waymark-study, the site icons and brand/downloads."

@@ -1,8 +1,8 @@
 # Waymark Study — brand kit
 
-A Switchback Labs app.
+A Little Summit Labs app.
 
-**Mark:** the Switchback Labs trail-with-stops, adapted for spaced repetition. Each climb between stops is longer than the last, like review intervals growing as you learn a card, and the trail ends at a **waymark** flag. **Color:** the app's own terracotta accent (`--accent` in `globals.css`) as a gradient. **Wordmark:** Plus Jakarta Sans (ExtraBold "Waymark", Medium "Study"), the same as Switchback Labs, converted to outlines.
+**Mark:** the original Switchback trail-with-stops, adapted for spaced repetition. Each climb between stops is longer than the last, like review intervals growing as you learn a card, and the trail ends at a **waymark** flag. **Color:** the app's own terracotta accent (`--accent` in `globals.css`) as a gradient. **Wordmark:** Plus Jakarta Sans (ExtraBold "Waymark", Medium "Study"), the same as Switchback Labs, converted to outlines.
 
 ## Drop-in for the Next.js app
 
@@ -45,9 +45,9 @@ The colors match the tokens already in `src/app/globals.css`.
 
 **Secondary palette (recall ratings 1–5):** `#B4413C`, `#C1703A`, `#B09030`, `#5D8A4A`, `#3F7D6E` (`--rating-1` to `--rating-5`). Use these for UI, not for the logo. The logo stays one terracotta.
 
-## Relationship to Switchback Labs
+## Relationship to Little Summit Labs
 - Same construction: a faint trail, bright stops, and a white mark on a gradient tile with the same corner radius.
-- Different color: Switchback is indigo, Waymark is terracotta. Each app keeps its own color.
-- Where both appear (the website, an About screen), you can add "by Switchback Labs" in the muted color under the Waymark lockup.
+- Different color: Little Summit Labs is indigo, Waymark is terracotta. Each app keeps its own color.
+- Where both appear (the website, an About screen), you can add "by Little Summit Labs" in the muted color under the Waymark lockup.
 
 Plus Jakarta Sans is licensed under the SIL Open Font License, so commercial use is fine.
