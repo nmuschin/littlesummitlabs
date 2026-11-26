@@ -2,7 +2,7 @@
 
 *This file is public on the studio site, like everything in this repo.*
 
-Built on 2026-11-05 (last updated 2026-11-25: studio design system and shared Swift file added under Studio. 2026-11-22: repo-rename references fixed in every repo. 2026-11-21: every repo rechecked, nothing new merged; hardware builds added; plan pushed back a week. 2026-11-20: netmap's merged roadmap work and #11; Android Studio installed; branch clean-up; repo renamed littlesummitlabs. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 16 repos; netmap and diabetes-project were added on 2026-11-05, and the two hardware builds on 2026-11-21.
+Built on 2026-11-05 (last updated 2026-11-26: diabetes-project's Medicare prescriber pull merged and its items brought up to date. 2026-11-25: studio design system and shared Swift file added under Studio. 2026-11-22: repo-rename references fixed in every repo. 2026-11-21: every repo rechecked, nothing new merged; hardware builds added; plan pushed back a week. 2026-11-20: netmap's merged roadmap work and #11; Android Studio installed; branch clean-up; repo renamed littlesummitlabs. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 16 repos; netmap and diabetes-project were added on 2026-11-05, and the two hardware builds on 2026-11-21.
 
 **How it's ordered:** first fixes for problems people can hit today, then apps that are built and only need launch steps, then feature work. Within each tier, the item that finishes an app comes before the one that starts something new.
 
@@ -149,15 +149,18 @@ Phases 1–3 are written. The Swift package compiles and its tests pass (nmuschi
 ## Other repos
 
 ### diabetes-project
-State variation in Medicaid GLP-1 use against diabetes burden. Not an app, so it's kept off the studio site. Steps 1–5 are merged (nmuschin/diabetes-project#2): burden data, the frozen GLP-1 product list, Medicare Part D and Medicaid drug data, the state-year panel, and the R models and figures. Step 6, the manuscript, is a first draft; step 7 is a medRxiv preprint. The full list is `manuscript/TODO.md`.
+State variation in Medicaid GLP-1 use against diabetes burden. Not an app, so it's kept off the studio site. Steps 1–5 are merged (nmuschin/diabetes-project#2): burden data, the frozen GLP-1 product list, Medicare Part D and Medicaid drug data, the state-year panel, and the R models and figures. Medicare Part D by state and prescriber specialty is merged too (nmuschin/diabetes-project#5). Step 6, the manuscript, is a first draft; nmuschin/diabetes-project#3 (open) adds the literature review. Step 7 is a medRxiv preprint. The full list is `manuscript/TODO.md`.
 - [x] Decide the question, the data sources and the output; the pre-specified plan is `docs/ANALYSIS_PLAN.md` 🤝
-- [ ] Review nmuschin/diabetes-project#3: the literature search and citations for the `[REF NEEDED]` places 🧑
-- [ ] Verify the eight listed references against the originals, and add access dates for the CMS data 🧑
-- [ ] Check the Arkansas explanation in the Discussion against CMS and state documentation, or delete it 🧑
+- [x] Medicare Part D GLP-1 use by state, Oklahoma against the US, and prescriber specialty, 2019–2024: run against CMS with every check passing and merged in nmuschin/diabetes-project#5 (2026-11-25) 🤖
+- [ ] Review and merge nmuschin/diabetes-project#3: the literature search, 24 references checked against PubMed and Crossref, and a rewritten Introduction and Discussion. It found the question was studied before (Do et al., *J Manag Care Spec Pharm* 2026, one year of claims), so the draft now says what this study adds instead of claiming to be first 🧑
+- [ ] Read the two relevant papers that couldn't be opened, Dun et al. (*Diabetes Care* 2026) and Klebanoff et al. (*J Gen Intern Med* 2026), and revise if they change the picture 🧑
+- [ ] Confirm three reference details #3 couldn't: the KFF brief's author, the ADA Standards section 9 wording behind the first paragraph, and PopHIVE's preferred citation 🧑
+- [ ] Arkansas: cite a source for its expansion adults being covered through private plans (an Arkansas DHS ARHOME quarterly report is the likely one), or delete the sentence. #3 rewrote the passage and left this one `[REF NEEDED]` 🧑
 - [ ] Reproduce the results on your machine with `R/05_models.R` and confirm they match Tables 2 and 3 🧑
 - [ ] Author block and declarations: affiliation, ORCID, contributions, funding, conflicts of interest, AI-use statement and ethics determination 🧑
 - [ ] Archive a release (for example on Zenodo) and cite the DOI; then post to medRxiv 🧑
-- [ ] Should do: a published weight-management coverage list instead of the proxy, the quarterly sensitivity analysis, a methods read by a biostatistician, and trimming the abstract to the venue's limit 🤝
+- [ ] Add generic liraglutide to the frozen product list with a dated amendment: it first appears in 2024 and is kept but flagged in the Medicare prescriber pull 🤝
+- [ ] Should do: a published weight-management coverage list instead of the proxy, the quarterly sensitivity analysis, a methods read by a biostatistician, and trimming to the venue's limits (with #3 the main text is about 3,050 words and the abstract about 360; JAMA Network Open allows 3,000 and 350) 🤝
 
 ### Hardware builds (CAD Mouse MK2, Focus Dial)
 Copies of Salim Benbouziyane's open hardware projects, unchanged so far (CC BY-NC-SA 4.0: fine for personal builds, but nothing made from them can be sold). Build guides are on Instructables, linked from each README.
