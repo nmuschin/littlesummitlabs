@@ -2,7 +2,7 @@
 
 *This file is public on the studio site, like everything in this repo.*
 
-Built on 2026-11-05 (last updated 2026-11-27: every repo rechecked; netmap's roadmap finished (#11–#21); CellarStories' tasting guide and two open PRs; FairCarCompare (carcost) added. 2026-11-26: diabetes-project's Medicare prescriber pull merged and its items brought up to date. 2026-11-25: studio design system and shared Swift file added under Studio. 2026-11-22: repo-rename references fixed in every repo. 2026-11-21: every repo rechecked, nothing new merged; hardware builds added; plan pushed back a week. 2026-11-20: netmap's merged roadmap work and #11; Android Studio installed; branch clean-up; repo renamed littlesummitlabs. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 17 repos; netmap and diabetes-project were added on 2026-11-05, the two hardware builds on 2026-11-21, and FairCarCompare (carcost) on 2026-11-27.
+Built on 2026-11-05 (last updated 2026-11-27: every repo rechecked; plan pushed back another week; netmap's roadmap finished (#11–#21); CellarStories' tasting guide and two open PRs; FairCarCompare (carcost) added. 2026-11-26: diabetes-project's Medicare prescriber pull merged and its items brought up to date. 2026-11-25: studio design system and shared Swift file added under Studio. 2026-11-22: repo-rename references fixed in every repo. 2026-11-21: every repo rechecked, nothing new merged; hardware builds added; plan pushed back a week. 2026-11-20: netmap's merged roadmap work and #11; Android Studio installed; branch clean-up; repo renamed littlesummitlabs. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 17 repos; netmap and diabetes-project were added on 2026-11-05, the two hardware builds on 2026-11-21, and FairCarCompare (carcost) on 2026-11-27.
 
 **How it's ordered:** first fixes for problems people can hit today, then apps that are built and only need launch steps, then feature work. Within each tier, the item that finishes an app comes before the one that starts something new.
 
@@ -210,7 +210,7 @@ Copies of Salim Benbouziyane's open hardware projects, unchanged so far (CC BY-N
 
 Rough times, assuming evenings and weekends. Each week ends with something shipped or submitted. If a week slips, push the whole plan back a week rather than starting the next app early.
 
-**Where things stand (Nov 27):** week 1 is done apart from the domains, the LLC and the Developer ID certificate. Week 2's leftovers are still open (HLB's push key, review notes and screenshots; QuoteBloom's screenshots and description), and week 3's apps (Cite It Right, MarkdownDoctor) haven't moved yet. This week's time went to the studio design system and app accents, Netmap's roadmap, CellarStories' tasting guide and starting FairCarCompare. The plan below still has its Nov 21 dates. Public releases wait for the organization account, so each app's "submit" step means **ready to submit** until then: TestFlight, screenshots and listing in place.
+**Where things stand (Nov 27):** week 1 is done apart from the domains, the LLC and the Developer ID certificate. Week 2's leftovers are still open (HLB's push key, review notes and screenshots; QuoteBloom's screenshots and description), and week 3's apps (Cite It Right, MarkdownDoctor) haven't moved yet. This week's time went to the studio design system and app accents, Netmap's roadmap, CellarStories' tasting guide and starting FairCarCompare. So **the plan moved back another week** (2026-11-27): week 3 now starts Nov 30. Public releases wait for the organization account, so each app's "submit" step means **ready to submit** until then: TestFlight, screenshots and listing in place.
 
 ### Week 1 · Nov 5–8 · decisions and paperwork (~3 h)
 1. ~~Waymark Study: set `MAIL_FROM` and `APP_URL` on the host~~ (already set).
@@ -224,20 +224,20 @@ Get each app ready to submit, but hold the public release until the organization
 2. QuoteBloom: screenshots for iPhone, iPad and Mac, description from the draft, submit.
 3. Studio: once the contact email is chosen, merge the privacy and support pages so both apps have their URLs.
 
-### Week 3 · Nov 23–29 · Cite It Right and MarkdownDoctor (~6 h; Thanksgiving week)
+### Week 3 · Nov 30–Dec 6 · Cite It Right and MarkdownDoctor (~6 h)
 Finish week 2's leftovers first if you can (HLB push key, QuoteBloom screenshots).
 1. Cite It Right: ~~first phase-6 build in Xcode, camera test on a real iPhone~~ (done); merge #6, then TestFlight.
 2. MarkdownDoctor: run `Scripts/release.sh`, publish the DMG, add it to the site. The Developer ID certificate carries the account's name, so do this on the organization account if it's ready.
 
-### Week 4 · Nov 30–Dec 6 · CellarStories
+### Week 4 · Dec 7–13 · CellarStories
 1. Import your real journal, run the live acceptance test with a friend, test iCloud sync across devices.
 2. Screenshots, 17+ age rating, submit.
 
-### Week 5 · Dec 7–13 · FuelTrack
+### Week 5 · Dec 14–20 · FuelTrack
 1. Check receipt scanning and CSV import, fix the slow first switch to Map or Stats, more parser test fixtures.
 2. Check the icon at every size, screenshots, submit.
 
-### From Dec 14 · feature work
+### From Dec 21 · feature work
 JobTrack's distribution decision and 0.6 polish, DateGlow widgets, Bellwether's schedule import, Netmap's iPhone app and iCloud setup, and FairCarCompare's M2 catalogue.
 
 ## App Store submission checklist (use for every app)
