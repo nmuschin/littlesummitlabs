@@ -2,7 +2,7 @@
 
 *This file is public on the studio site, like everything in this repo.*
 
-Built on 2026-11-05 (last updated 2026-11-25: studio design system and shared Swift file added under Studio. 2026-11-22: repo-rename references fixed in every repo. 2026-11-21: every repo rechecked, nothing new merged; hardware builds added; plan pushed back a week. 2026-11-20: netmap's merged roadmap work and #11; Android Studio installed; branch clean-up; repo renamed littlesummitlabs. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 16 repos; netmap and diabetes-project were added on 2026-11-05, and the two hardware builds on 2026-11-21.
+Built on 2026-11-05 (last updated 2026-11-27: every repo rechecked; plan pushed back another week; netmap's roadmap finished (#11–#21); CellarStories' tasting guide and two open PRs; FairCarCompare (carcost) added. 2026-11-26: diabetes-project's Medicare prescriber pull merged and its items brought up to date. 2026-11-25: studio design system and shared Swift file added under Studio. 2026-11-22: repo-rename references fixed in every repo. 2026-11-21: every repo rechecked, nothing new merged; hardware builds added; plan pushed back a week. 2026-11-20: netmap's merged roadmap work and #11; Android Studio installed; branch clean-up; repo renamed littlesummitlabs. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 17 repos; netmap and diabetes-project were added on 2026-11-05, the two hardware builds on 2026-11-21, and FairCarCompare (carcost) on 2026-11-27.
 
 **How it's ordered:** first fixes for problems people can hit today, then apps that are built and only need launch steps, then feature work. Within each tier, the item that finishes an app comes before the one that starts something new.
 
@@ -73,6 +73,10 @@ Web went live on Oct 20. The iOS app is feature-complete for 1.0.
 - [ ] Submit iOS: screenshots, privacy policy URL, 17+ age rating (alcohol) 🧑
 - [x] New app icon: a bottle whose label is an open notebook (nmuschin/CellarStories#3, 2026-11-19) 🤝
 - [ ] Check the icon on your Mac: Icon Composer's Default, Dark and Mono previews, then the Home Screen and Dock 🧑
+- [x] A tasting guide: an ⓘ beside every characteristic and score, a "How to taste" sheet in the app and a public `/guide` page on the web; Dry/Sweet moved to Characteristics. Merged in nmuschin/CellarStories#6 (2026-11-26) 🤖
+- [ ] **Review and merge nmuschin/CellarStories#7:** tappable tasting words under Aromas & Taste, ranked from your own past notes (no schema change). iOS tests pass and it ran in the Simulator; not checked: the macOS build, and the web form's chips in a browser 🧑
+- [ ] **Pick where wine clubs live in the app** (nmuschin/CellarStories#8, a design doc only). The app has no sign-in or networking today; the doc recommends option 2 plus a join-code field now, and full sign-in only once your journal is on the website. It also found the web `/join` page drops the code when you're signed out (a one-line fix) 🧑
+- [ ] A "would buy again" verdict is started on the `wine-buy-again` branch (work in progress, no PR yet). It touches the same Notes section as #7, so expect a small conflict 🤖
 
 ### 5. MarkdownDoctor (Mac)
 All engineering for 1.0 is done. `Scripts/release.sh` archives, signs, notarizes and builds the DMG.
@@ -127,37 +131,54 @@ Every module in `PLAN.md`'s build order is built, and there's no open backlog.
 - [ ] Link-preview image, once you share the production URL 🤖
 
 ### 12. Netmap (Mac + iPhone network scanner)
-Phases 1–3 are written. The Swift package compiles and its tests pass (nmuschin/netmap#2), and **the Mac app runs on your network**: onboarding finds Home Assistant by its own announcement (#3), and the scanner is wired into both apps (#4). Phase 4 changed: **no nmap** (macOS blocks its unsigned installer); the built-in scanner went deeper instead. The plan is `docs/ROADMAP.md`. The work merged on 2026-11-19 and 20 (#5–#10) hasn't been compiled on a Mac yet.
+The Mac app builds and runs on your network, now with a signed root helper that reads the ARP table (#18) and runs SYN scans of the local network (#21). All five roadmap items are merged: built-in scanner depth instead of nmap, risky-service flags, a Bonjour browser, watched websites with certificate-expiry warnings (#11, #13, #15) and Shortcuts and Siri on iPhone (#14). The plan is `docs/ROADMAP.md`. The iPhone app still hasn't been run on a device.
 - [x] Confirm the assumptions on your network (Home Assistant found by its announcement, on port 80 rather than 8123; nmuschin/netmap#3) 🧑
 - [x] First build of the package: `swift build` and `swift test` pass (nmuschin/netmap#2, 2026-11-16) 🤝
-- [x] Build and run the Mac app (nmuschin/netmap#3, #4) 🤝
-- [x] Wire the scan screens into both apps' navigation (nmuschin/netmap#4) 🤖
-- [x] README status: the package compiles and the Mac app runs (nmuschin/netmap#8, merged 2026-11-20) 🤖
-- [x] Phase 4: built-in scanner depth instead of nmap: services identified from their replies, TLS certificates, ~150 ranked ports, several hosts at once, a native "Thorough scan" (nmuschin/netmap#5) 🤖
-- [x] "Skip host discovery" (`-Pn`) now works in the built-in scanner (nmuschin/netmap#6), with a fix to the port-scan progress count (#9) 🤖
-- [x] Roadmap 2: flag risky services in scan results (nmuschin/netmap#7) 🤖
-- [x] Roadmap 3: a Bonjour browser for announced services (nmuschin/netmap#10) 🤖
-- [ ] **Build the Mac app again** with #5–#10 in it, and fix what that turns up 🤝
+- [x] Build and run the Mac app, then again with #5–#10 and the root helper (nmuschin/netmap#3, #4, #18; last run 2026-11-26) 🤝
+- [x] Roadmap 1–3: built-in scanner depth instead of nmap (#5, #6, #9), risky-service flags (#7) and a Bonjour browser (#10) 🤖
+- [x] Roadmap 4: watch websites alongside devices (#11), warn before a certificate expires (#13), and show certificates on the iPhone (#15). Merged 2026-11-25 🤖
+- [x] Roadmap 5: Siri and Shortcuts actions on iPhone (nmuschin/netmap#14, 2026-11-25) 🤖
+- [x] Name scanned devices by what they announce over Bonjour (nmuschin/netmap#16) 🤖
+- [x] A signed root helper on the Mac that reads the ARP table, turned on in Settings › General › Hardware addresses (nmuschin/netmap#18, 2026-11-26) 🤝
+- [x] The full IEEE vendor list bundled, about 40,000 prefixes; made-up Wi-Fi addresses show as "Private address" (nmuschin/netmap#19) 🤖
+- [x] Saved scans described in plain words (nmuschin/netmap#20) 🤖
+- [x] SYN scans of the local network through the helper, local addresses only, with a fallback to connect scans (nmuschin/netmap#21, merged 2026-11-27) 🤖
+- [ ] **Check the SYN scan on your Mac** (steps in #21): a Quick scan should read "Quick scan (SYN)", find about the same ports as your Nov 26 scan but faster (look at what answers on port 53), and fall back to a plain Quick scan with the helper off 🧑
+- [ ] **Review and merge nmuschin/netmap#22:** fixes the build's concurrency and unused-result warnings, no behaviour change. 368 tests pass on Linux; the Mac-only files weren't compiled. Check `swift test` prints no warnings 🧑
 - [ ] Build and run the iPhone app on a device 🧑
 - [ ] iCloud setup per `docs/CLOUDKIT.md`: container ID, the queryable index, deploy the schema to Production, APNs environment 🧑
-- [ ] Roadmap 4, watching websites alongside devices (with certificate-expiry warnings): built in nmuschin/netmap#11, open. Review, build and merge 🧑
-- [ ] Roadmap 5: Shortcuts and Siri 🤖
-- [ ] Phase 4, later: device names from Bonjour during a scan, and optionally a signed privileged helper for SYN scans and reading the ARP table 🤖
+- [ ] Show the closed and filtered port counts the SYN scan already returns (left out of #21) 🤖
+- [ ] Update the README's "Build status (Nov 16)" note, which predates the helper and SYN scans 🤖
 - [ ] App icons and asset catalogs 🤝
-- [ ] Later: a headless watcher executable (`NetmapWatch` is already UI-free), the full IEEE vendor list instead of the seed `OUIDatabase`, and two-way device-settings sync 🤖
+- [ ] Later: an always-on watcher on the Pi or another always-on machine (`NetmapWatch` is already UI-free), so checks don't stop while the Mac sleeps; two-way device-settings sync 🤖
+
+### 13. FairCarCompare (carcost; web)
+A web app that picks a car buyer's top 3 vehicles by true monthly cost of ownership: loan or lease, insurance, fuel or charging, taxes, fees, maintenance and depreciation. Next.js on Vercel with Neon Postgres and a pure TypeScript cost engine. Web only for now: no Swift app unless there's traction. The plan is `PLAN.md`; started 2026-11-27.
+- [x] MVP plan and name: **FairCarCompare**, short form FairCar (nmuschin/carcost#1) 🤝
+- [x] Icon kit: three bars with a check on the cheapest, on a green gradient tile (nmuschin/carcost#2) 🤖
+- [x] M0: the skeleton on Vercel and Neon, `/api/health`, CI (nmuschin/carcost#3, #4) 🤖
+- [x] M1: the cost engine reproduces all 8 totals in the founding spreadsheet (nmuschin/carcost#5), and leases with Oklahoma's lease tax (#6) 🤖
+- [ ] M1 leftovers: Oklahoma's registration discount for older cars, other states, calibrated depreciation and maintenance (placeholders now), and how Service Oklahoma treats a trade-in on a lease under HB 1183 🤖
+- [ ] M2: the vehicle catalogue, an EPA and NHTSA import with the top ~300 models 🤖
+- [ ] M3: the questionnaire and top-3 matcher; M4: the compare view and a shareable dealer sheet 🤖
+- [ ] M5: 20–30 real car shoppers try it; M6: a first revenue test (a manual deal-check report and one or two affiliate links) 🤝
+- [ ] Before launch: buy `faircarcompare.com` (and maybe `faircar.app`), search USPTO for "FairCar", rename the repo from `carcost`, and check the legal list in `PLAN.md` §9 (disclaimers, affiliate disclosure, a lawyer before paid leads) 🧑
 
 ## Other repos
 
 ### diabetes-project
-State variation in Medicaid GLP-1 use against diabetes burden. Not an app, so it's kept off the studio site. Steps 1–5 are merged (nmuschin/diabetes-project#2): burden data, the frozen GLP-1 product list, Medicare Part D and Medicaid drug data, the state-year panel, and the R models and figures. Step 6, the manuscript, is a first draft; step 7 is a medRxiv preprint. The full list is `manuscript/TODO.md`.
+State variation in Medicaid GLP-1 use against diabetes burden. Not an app, so it's kept off the studio site. Steps 1–5 are merged (nmuschin/diabetes-project#2): burden data, the frozen GLP-1 product list, Medicare Part D and Medicaid drug data, the state-year panel, and the R models and figures. Medicare Part D by state and prescriber specialty is merged too (nmuschin/diabetes-project#5). Step 6, the manuscript, is a first draft; nmuschin/diabetes-project#3 (open) adds the literature review. Step 7 is a medRxiv preprint. The full list is `manuscript/TODO.md`.
 - [x] Decide the question, the data sources and the output; the pre-specified plan is `docs/ANALYSIS_PLAN.md` 🤝
-- [ ] Review nmuschin/diabetes-project#3: the literature search and citations for the `[REF NEEDED]` places 🧑
-- [ ] Verify the eight listed references against the originals, and add access dates for the CMS data 🧑
-- [ ] Check the Arkansas explanation in the Discussion against CMS and state documentation, or delete it 🧑
+- [x] Medicare Part D GLP-1 use by state, Oklahoma against the US, and prescriber specialty, 2019–2024: run against CMS with every check passing and merged in nmuschin/diabetes-project#5 (2026-11-25) 🤖
+- [ ] Review and merge nmuschin/diabetes-project#3: the literature search, 24 references checked against PubMed and Crossref, and a rewritten Introduction and Discussion. It found the question was studied before (Do et al., *J Manag Care Spec Pharm* 2026, one year of claims), so the draft now says what this study adds instead of claiming to be first 🧑
+- [ ] Read the two relevant papers that couldn't be opened, Dun et al. (*Diabetes Care* 2026) and Klebanoff et al. (*J Gen Intern Med* 2026), and revise if they change the picture 🧑
+- [ ] Confirm three reference details #3 couldn't: the KFF brief's author, the ADA Standards section 9 wording behind the first paragraph, and PopHIVE's preferred citation 🧑
+- [ ] Arkansas: cite a source for its expansion adults being covered through private plans (an Arkansas DHS ARHOME quarterly report is the likely one), or delete the sentence. #3 rewrote the passage and left this one `[REF NEEDED]` 🧑
 - [ ] Reproduce the results on your machine with `R/05_models.R` and confirm they match Tables 2 and 3 🧑
 - [ ] Author block and declarations: affiliation, ORCID, contributions, funding, conflicts of interest, AI-use statement and ethics determination 🧑
 - [ ] Archive a release (for example on Zenodo) and cite the DOI; then post to medRxiv 🧑
-- [ ] Should do: a published weight-management coverage list instead of the proxy, the quarterly sensitivity analysis, a methods read by a biostatistician, and trimming the abstract to the venue's limit 🤝
+- [ ] Add generic liraglutide to the frozen product list with a dated amendment: it first appears in 2024 and is kept but flagged in the Medicare prescriber pull 🤝
+- [ ] Should do: a published weight-management coverage list instead of the proxy, the quarterly sensitivity analysis, a methods read by a biostatistician, and trimming to the venue's limits (with #3 the main text is about 3,050 words and the abstract about 360; JAMA Network Open allows 3,000 and 350) 🤝
 
 ### Hardware builds (CAD Mouse MK2, Focus Dial)
 Copies of Salim Benbouziyane's open hardware projects, unchanged so far (CC BY-NC-SA 4.0: fine for personal builds, but nothing made from them can be sold). Build guides are on Instructables, linked from each README.
@@ -169,6 +190,7 @@ Copies of Salim Benbouziyane's open hardware projects, unchanged so far (CC BY-N
 
 - [ ] **Privacy policy and support pages.** Written in nmuschin/littlesummitlabs#3 (draft) for QuoteBloom, FuelTrack, DateGlow, Bellwether, MarkdownDoctor and CellarStories, plus `/support.html`. Waiting on a contact email to replace the `CONTACT_EMAIL` placeholder. They also need renaming from Switchback Labs to Little Summit Labs; once the domain is bought, `hello@littlesummit.app` is the natural contact address (your call). 🧑
 - [ ] Add App Store and website links to the app grid as each app ships 🤖
+- [ ] Add FairCarCompare (carcost) to the repo table in CodeAI's `CLAUDE.md` 🤖
 - [x] Followed the repo rename everywhere else: a one-line `CLAUDE.md` fix in each of 13 repos, plus CodeAI's `CLAUDE.md` and scripts (nmuschin/CodeAI#5), merged 2026-11-22 🤖
 - [ ] On your Mac, rename a local `switchbacklabs` clone folder to `littlesummitlabs`, so CodeAI's `render_app_icons.js` finds the Waymark Study icon 🧑
 - [x] Branding round: icons for Bellwether (a silent bell with haptic buzz marks, nmuschin/Bellwether#2) and CellarStories (a bottle whose label is an open notebook, nmuschin/CellarStories#3), each in its own colour. Merged 2026-11-19; check them on your Mac 🤝
@@ -188,7 +210,7 @@ Copies of Salim Benbouziyane's open hardware projects, unchanged so far (CC BY-N
 
 Rough times, assuming evenings and weekends. Each week ends with something shipped or submitted. If a week slips, push the whole plan back a week rather than starting the next app early.
 
-**Where things stand (Nov 21):** week 1 is done apart from the domains, the LLC and the Developer ID certificate. Week 2 is partly done: HLB is on TestFlight with its demo account, but the push key, review notes and screenshots are still open, and so are QuoteBloom's screenshots and description. Week 3 didn't start, so from week 3 on **the plan moved back a week** (2026-11-21). Public releases wait for the organization account, so each app's "submit" step means **ready to submit** until then: TestFlight, screenshots and listing in place.
+**Where things stand (Nov 27):** week 1 is done apart from the domains, the LLC and the Developer ID certificate. Week 2's leftovers are still open (HLB's push key, review notes and screenshots; QuoteBloom's screenshots and description), and week 3's apps (Cite It Right, MarkdownDoctor) haven't moved yet. This week's time went to the studio design system and app accents, Netmap's roadmap, CellarStories' tasting guide and starting FairCarCompare. So **the plan moved back another week** (2026-11-27): week 3 now starts Nov 30. Public releases wait for the organization account, so each app's "submit" step means **ready to submit** until then: TestFlight, screenshots and listing in place.
 
 ### Week 1 · Nov 5–8 · decisions and paperwork (~3 h)
 1. ~~Waymark Study: set `MAIL_FROM` and `APP_URL` on the host~~ (already set).
@@ -202,21 +224,21 @@ Get each app ready to submit, but hold the public release until the organization
 2. QuoteBloom: screenshots for iPhone, iPad and Mac, description from the draft, submit.
 3. Studio: once the contact email is chosen, merge the privacy and support pages so both apps have their URLs.
 
-### Week 3 · Nov 23–29 · Cite It Right and MarkdownDoctor (~6 h; Thanksgiving week)
+### Week 3 · Nov 30–Dec 6 · Cite It Right and MarkdownDoctor (~6 h)
 Finish week 2's leftovers first if you can (HLB push key, QuoteBloom screenshots).
 1. Cite It Right: ~~first phase-6 build in Xcode, camera test on a real iPhone~~ (done); merge #6, then TestFlight.
 2. MarkdownDoctor: run `Scripts/release.sh`, publish the DMG, add it to the site. The Developer ID certificate carries the account's name, so do this on the organization account if it's ready.
 
-### Week 4 · Nov 30–Dec 6 · CellarStories
+### Week 4 · Dec 7–13 · CellarStories
 1. Import your real journal, run the live acceptance test with a friend, test iCloud sync across devices.
 2. Screenshots, 17+ age rating, submit.
 
-### Week 5 · Dec 7–13 · FuelTrack
+### Week 5 · Dec 14–20 · FuelTrack
 1. Check receipt scanning and CSV import, fix the slow first switch to Map or Stats, more parser test fixtures.
 2. Check the icon at every size, screenshots, submit.
 
-### From Dec 14 · feature work
-JobTrack's distribution decision and 0.6 polish, DateGlow widgets, Bellwether's schedule import, and Netmap's Mac rebuild with #5–#11.
+### From Dec 21 · feature work
+JobTrack's distribution decision and 0.6 polish, DateGlow widgets, Bellwether's schedule import, Netmap's iPhone app and iCloud setup, and FairCarCompare's M2 catalogue.
 
 ## App Store submission checklist (use for every app)
 
