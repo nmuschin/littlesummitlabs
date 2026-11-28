@@ -90,7 +90,18 @@ Web went live on Oct 20. The iOS app is feature-complete for 1.0.
 - [ ] **Full Supabase sign-in in the app (phase 3)** stays parked, gated on your own journal
       actually being in the website. See `docs/app-clubs-options.md` in CellarStories for the
       three options, the costs, and why four of the six Path to 1.0 items come first 🧑
-- [ ] **Review and merge nmuschin/CellarStories#9:** a "would buy again" verdict. Open since 2026-11-27 🧑
+- [ ] **Review and merge nmuschin/CellarStories#9:** a nullable "would buy again" verdict
+      (Buy again / Drink if offered / Only if free / Wouldn't drink again), unset by default,
+      across the app, the site and a new migration `0013_verdict.sql`. Both Xcode builds and all
+      tests were checked on the Mac. Open since 2026-11-27 🧑
+  - **Apply `0013` before merging it, not after.** Vercel auto-deploys `main`, migrations are
+    manual, and `cellarstories-prod` is still at `0012` (checked 2026-11-28). Merging first
+    errors every page that selects `verdict` — journal, feed, `wines/[id]`, `tastings/[id]`,
+    export — and fails every new-note insert. Take a backup first, as `docs/deployment-guide.md`
+    says. Its green CI ran before #10 landed, so the tick predates the `main` it would merge into 🧑
+  - **Redeploy the CloudKit production schema** before any TestFlight or App Store build carrying
+    it. `WineEntry.verdict` is a new synced field, production schemas are add-only, and the last
+    deploy was 2026-11-08 🧑
 
 ### 5. MarkdownDoctor (Mac)
 All engineering for 1.0 is done. `Scripts/release.sh` archives, signs, notarizes and builds the DMG.
