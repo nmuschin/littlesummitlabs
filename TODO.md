@@ -2,7 +2,7 @@
 
 *This file is public on the studio site, like everything in this repo.*
 
-Built on 2026-11-05 (last updated 2026-11-28: HLB ready for iPhone Duo (nmuschin/HighLowBuffalo#25); CellarStories' wine-club question decided and shipped (#8, #10), and #7 merged; netmap's app icon merged (#26); netmap's port 53 found and fixed (#24), and SYN scans' closed and filtered counts shown (#25). 2026-11-27: netmap's SYN scans checked on the Mac and #22–#23 merged; every repo rechecked; plan pushed back another week; netmap's roadmap finished (#11–#21); CellarStories' tasting guide and two open PRs; FairCarCompare (carcost) added. 2026-11-26: diabetes-project's Medicare prescriber pull merged and its items brought up to date. 2026-11-25: studio design system and shared Swift file added under Studio. 2026-11-22: repo-rename references fixed in every repo. 2026-11-21: every repo rechecked, nothing new merged; hardware builds added; plan pushed back a week. 2026-11-20: netmap's merged roadmap work and #11; Android Studio installed; branch clean-up; repo renamed littlesummitlabs. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 17 repos; netmap and diabetes-project were added on 2026-11-05, the two hardware builds on 2026-11-21, and FairCarCompare (carcost) on 2026-11-27.
+Built on 2026-11-05 (last updated 2026-11-28: CellarStories' “would buy again” verdict shipped, migration 0013 applied to production first (#9); HLB ready for iPhone Duo (nmuschin/HighLowBuffalo#25); CellarStories' wine-club question decided and shipped (#8, #10), and #7 merged; netmap's app icon merged (#26); netmap's port 53 found and fixed (#24), and SYN scans' closed and filtered counts shown (#25). 2026-11-27: netmap's SYN scans checked on the Mac and #22–#23 merged; every repo rechecked; plan pushed back another week; netmap's roadmap finished (#11–#21); CellarStories' tasting guide and two open PRs; FairCarCompare (carcost) added. 2026-11-26: diabetes-project's Medicare prescriber pull merged and its items brought up to date. 2026-11-25: studio design system and shared Swift file added under Studio. 2026-11-22: repo-rename references fixed in every repo. 2026-11-21: every repo rechecked, nothing new merged; hardware builds added; plan pushed back a week. 2026-11-20: netmap's merged roadmap work and #11; Android Studio installed; branch clean-up; repo renamed littlesummitlabs. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 17 repos; netmap and diabetes-project were added on 2026-11-05, the two hardware builds on 2026-11-21, and FairCarCompare (carcost) on 2026-11-27.
 
 **How it's ordered:** first fixes for problems people can hit today, then apps that are built and only need launch steps, then feature work. Within each tier, the item that finishes an app comes before the one that starts something new.
 
@@ -91,18 +91,20 @@ Web went live on Oct 20. The iOS app is feature-complete for 1.0.
 - [ ] **Full Supabase sign-in in the app (phase 3)** stays parked, gated on your own journal
       actually being in the website. See `docs/app-clubs-options.md` in CellarStories for the
       three options, the costs, and why four of the six Path to 1.0 items come first 🧑
-- [ ] **Review and merge nmuschin/CellarStories#9:** a nullable "would buy again" verdict
-      (Buy again / Drink if offered / Only if free / Wouldn't drink again), unset by default,
-      across the app, the site and a new migration `0013_verdict.sql`. Both Xcode builds and all
-      tests were checked on the Mac. Open since 2026-11-27 🧑
-  - **Apply `0013` before merging it, not after.** Vercel auto-deploys `main`, migrations are
-    manual, and `cellarstories-prod` is still at `0012` (checked 2026-11-28). Merging first
-    errors every page that selects `verdict` — journal, feed, `wines/[id]`, `tastings/[id]`,
-    export — and fails every new-note insert. Take a backup first, as `docs/deployment-guide.md`
-    says. Its green CI ran before #10 landed, so the tick predates the `main` it would merge into 🧑
-  - **Redeploy the CloudKit production schema** before any TestFlight or App Store build carrying
-    it. `WineEntry.verdict` is a new synced field, production schemas are add-only, and the last
-    deploy was 2026-11-08 🧑
+- [x] **A "would buy again" verdict** (Buy again / Drink if offered / Only if free /
+      Wouldn't drink again), unset by default, across the app, the site and migration
+      `0013_verdict.sql`. Merged in nmuschin/CellarStories#9 (2026-11-28) after `0013` was
+      applied to `cellarstories-prod`, in that order. Verified afterwards: the domain rejects
+      an unknown value, the live API serves `?select=verdict`, web 36/36, typecheck clean, and
+      Vercel deployed `main` green 🤖
+- [ ] **Redeploy the CloudKit production schema** before any TestFlight or App Store build
+      carrying the verdict. `WineEntry.verdict` is a new synced field, production schemas are
+      add-only, and the last deploy was 2026-11-08 🧑
+- [ ] **Carry the verdict into `SharedTasting`** so a friend's imported `.winenote` keeps it.
+      Not started: the session that was asked to do it was interrupted before it wrote
+      anything. `SharedTasting.verdict`, set in `SharedWine.makeSharedTasting`, shown wherever
+      that type's `recommended` is shown, absence rendered as absence. Nothing in `web/` and no
+      SQL 🤖
 
 ### 5. MarkdownDoctor (Mac)
 All engineering for 1.0 is done. `Scripts/release.sh` archives, signs, notarizes and builds the DMG.
