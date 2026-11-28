@@ -38,7 +38,7 @@ Web is live. iOS milestones I0–I6 and Phase 2 (Friends, History, Settings, Wid
 - [x] First TestFlight upload (2026-11-10) 🧑
 - [ ] App Review notes: delete account, report and block paths (draft in `PLAN-ios.md` §8) 🤝
 - [ ] Screenshots + the privacy "nutrition label" (email, name, user content, no tracking) 🧑. Include **iPhone Duo** screenshots from its simulator: they earn an "optimized for iPhone Duo" badge now and are required for submissions from April 2027 (`ios/AppStore.md`)
-- [x] **Ready for iPhone Duo**: rotates, keeps a readable column on the unfolded display and in landscape, and Google Sign-In opens over the front scene. Built and tested with Xcode 27.2; merged in nmuschin/HighLowBuffalo#25 on 2026-11-28 🤝
+- [x] **Ready for iPhone Duo**: rotates, keeps a readable column on the unfolded display and in landscape, and Google Sign-In opens over the front scene. Merged in nmuschin/HighLowBuffalo#25 on 2026-11-28 🤝
 - [ ] **Push notifications: fix the key, then test.** `APNS_KEY_ID` and `APNS_PRIVATE_KEY` are in Vercel, but the server can't read the key (`ERR_OSSL_UNSUPPORTED`): the paste lost its line breaks or gained quotation marks. Re-paste the `.p8` with its six lines intact, redeploy, then react to one of your days from the demo account. Optional: have the server accept any paste of the key 🤝
 - [ ] **Open the app straight away on launch** (nmuschin/HighLowBuffalo#21): build it, run the tests, and check a launch after 10 idle minutes and one in Airplane Mode, then merge. Launch still felt slow from Xcode; check from the Home Screen or TestFlight 🧑
 - [x] Icon: the same bison on a terracotta gradient tile (option 1, kept simple while the studio name may still change). Merged in nmuschin/HighLowBuffalo#20 on 2026-11-06 🤝
