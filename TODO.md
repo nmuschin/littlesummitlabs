@@ -2,7 +2,7 @@
 
 *This file is public on the studio site, like everything in this repo.*
 
-Built on 2026-11-05 (last updated 2026-11-28: netmap's port 53 found and fixed (#24). 2026-11-27: netmap's SYN scans checked on the Mac and #22–#23 merged; every repo rechecked; plan pushed back another week; netmap's roadmap finished (#11–#21); CellarStories' tasting guide and two open PRs; FairCarCompare (carcost) added. 2026-11-26: diabetes-project's Medicare prescriber pull merged and its items brought up to date. 2026-11-25: studio design system and shared Swift file added under Studio. 2026-11-22: repo-rename references fixed in every repo. 2026-11-21: every repo rechecked, nothing new merged; hardware builds added; plan pushed back a week. 2026-11-20: netmap's merged roadmap work and #11; Android Studio installed; branch clean-up; repo renamed littlesummitlabs. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 17 repos; netmap and diabetes-project were added on 2026-11-05, the two hardware builds on 2026-11-21, and FairCarCompare (carcost) on 2026-11-27.
+Built on 2026-11-05 (last updated 2026-11-28: CellarStories' wine-club question decided and shipped (#8, #10), and #7 merged; netmap's port 53 found and fixed (#24). 2026-11-27: netmap's SYN scans checked on the Mac and #22–#23 merged; every repo rechecked; plan pushed back another week; netmap's roadmap finished (#11–#21); CellarStories' tasting guide and two open PRs; FairCarCompare (carcost) added. 2026-11-26: diabetes-project's Medicare prescriber pull merged and its items brought up to date. 2026-11-25: studio design system and shared Swift file added under Studio. 2026-11-22: repo-rename references fixed in every repo. 2026-11-21: every repo rechecked, nothing new merged; hardware builds added; plan pushed back a week. 2026-11-20: netmap's merged roadmap work and #11; Android Studio installed; branch clean-up; repo renamed littlesummitlabs. 2026-11-19: Bellwether and CellarStories icons. 2026-11-18: every repo reviewed again; studio renamed Little Summit Labs; HLB's first TestFlight upload; netmap's tests pass; diabetes-project's analysis and manuscript draft) from every connected repo's TODO.md, PLAN*.md, ROADMAP.md, README "next steps", docs and code comments. Open pull requests are listed with the item they belong to. Covers 17 repos; netmap and diabetes-project were added on 2026-11-05, the two hardware builds on 2026-11-21, and FairCarCompare (carcost) on 2026-11-27.
 
 **How it's ordered:** first fixes for problems people can hit today, then apps that are built and only need launch steps, then feature work. Within each tier, the item that finishes an app comes before the one that starts something new.
 
@@ -74,9 +74,34 @@ Web went live on Oct 20. The iOS app is feature-complete for 1.0.
 - [x] New app icon: a bottle whose label is an open notebook (nmuschin/CellarStories#3, 2026-11-19) 🤝
 - [ ] Check the icon on your Mac: Icon Composer's Default, Dark and Mono previews, then the Home Screen and Dock 🧑
 - [x] A tasting guide: an ⓘ beside every characteristic and score, a "How to taste" sheet in the app and a public `/guide` page on the web; Dry/Sweet moved to Characteristics. Merged in nmuschin/CellarStories#6 (2026-11-26) 🤖
-- [ ] **Review and merge nmuschin/CellarStories#7:** tappable tasting words under Aromas & Taste, ranked from your own past notes (no schema change). iOS tests pass and it ran in the Simulator; not checked: the macOS build, and the web form's chips in a browser 🧑
-- [ ] **Pick where wine clubs live in the app** (nmuschin/CellarStories#8, a design doc only). The app has no sign-in or networking today; the doc recommends option 2 plus a join-code field now, and full sign-in only once your journal is on the website. It also found the web `/join` page drops the code when you're signed out (a one-line fix) 🧑
-- [ ] A "would buy again" verdict is started on the `wine-buy-again` branch (work in progress, no PR yet). It touches the same Notes section as #7, so expect a small conflict 🤖
+- [x] Tappable tasting words under Aromas & Taste, ranked from your own past notes (no schema change). Merged in nmuschin/CellarStories#7 (2026-11-27) 🤝
+- [x] **Where wine clubs live in the app — decided and built.** The design doc is
+      nmuschin/CellarStories#8; you picked option 2 plus the join-code field, and it shipped in
+      nmuschin/CellarStories#10 (2026-11-28). The Wine Club tab now says clubs live on the
+      website, takes a join code and opens `/join?code=…`, and the same signpost sits at the
+      foot of the comparison list. The `/join` page no longer drops the code when you're signed
+      out — nor does the `/onboarding` claim step, which lost it the same way. 48/48 app tests
+      after a clean rebuild, macOS builds, web 31/31 with typecheck and build clean, and the
+      screen exercised in the Simulator. **Not checked:** the browser round trip against a
+      running stack 🤝
+- [ ] **Deploy the website before shipping an app build with the join-code field.** The app
+      points at production, so if an app build goes out first, codes still get dropped at
+      sign-in. No action while nothing is submitted; just don't ship them out of order 🧑
+- [ ] **Full Supabase sign-in in the app (phase 3)** stays parked, gated on your own journal
+      actually being in the website. See `docs/app-clubs-options.md` in CellarStories for the
+      three options, the costs, and why four of the six Path to 1.0 items come first 🧑
+- [ ] **Review and merge nmuschin/CellarStories#9:** a nullable "would buy again" verdict
+      (Buy again / Drink if offered / Only if free / Wouldn't drink again), unset by default,
+      across the app, the site and a new migration `0013_verdict.sql`. Both Xcode builds and all
+      tests were checked on the Mac. Open since 2026-11-27 🧑
+  - **Apply `0013` before merging it, not after.** Vercel auto-deploys `main`, migrations are
+    manual, and `cellarstories-prod` is still at `0012` (checked 2026-11-28). Merging first
+    errors every page that selects `verdict` — journal, feed, `wines/[id]`, `tastings/[id]`,
+    export — and fails every new-note insert. Take a backup first, as `docs/deployment-guide.md`
+    says. Its green CI ran before #10 landed, so the tick predates the `main` it would merge into 🧑
+  - **Redeploy the CloudKit production schema** before any TestFlight or App Store build carrying
+    it. `WineEntry.verdict` is a new synced field, production schemas are add-only, and the last
+    deploy was 2026-11-08 🧑
 
 ### 5. MarkdownDoctor (Mac)
 All engineering for 1.0 is done. `Scripts/release.sh` archives, signs, notarizes and builds the DMG.
